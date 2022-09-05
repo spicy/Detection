@@ -33,7 +33,7 @@ namespace Detection
                 // if the object we collide with is scannable, then emit a particle at that location
                 var scannableObject = hit.transform.gameObject.GetComponent<IScannable>();
                 if (scannableObject == null) return;
-                scannableObject.EmitParticle(hit.point);
+                scannableObject.EmitParticle(hit.point, null);
             }
         }
     }

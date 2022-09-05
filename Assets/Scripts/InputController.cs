@@ -22,9 +22,9 @@ namespace Detection
             mainScanner = gameObject.GetComponent(typeof(LookScanner)) as LookScanner;
 
             StartCoroutine(ShootInterval());
-            // when we want multithreading to make the scanner not frame dependent
-            //thread = new Thread(new ThreadStart(ScanInterval));
-            //thread.Start();
+
+            // start song
+            FindObjectOfType<MusicManager>().PlayNextSongInList();
         }
 
         private IEnumerator ShootInterval()
@@ -39,7 +39,7 @@ namespace Detection
         // Update is called once per frame
         void Update()
         {
-            Ray eyePos = Camera.main.ScreenPointToRay(new Vector3((Screen.width / 2), (Screen.height / 2), 0));
+            Ray eyePos = cam.ScreenPointToRay(new Vector3((Screen.width / 2), (Screen.height / 2), 0));
             aimPos.x = eyePos.direction.x + tempOffsetX;
             aimPos.y = eyePos.direction.y + tempOffsetY;
         }
