@@ -167,7 +167,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 30558303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f34ed108d613a2428360562cf619bac, type: 3}
+  m_Script: {fileID: 11500000, guid: e0496f28f0e982e478562de299a5c14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 1533318668}
@@ -892,7 +892,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 30000
+    maxNumParticles: 15000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -5499,7 +5499,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 98530944}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SampleLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5682,7 +5682,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 153230988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f34ed108d613a2428360562cf619bac, type: 3}
+  m_Script: {fileID: 11500000, guid: e0496f28f0e982e478562de299a5c14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 1533318668}
@@ -12917,7 +12917,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 471086182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f34ed108d613a2428360562cf619bac, type: 3}
+  m_Script: {fileID: 11500000, guid: e0496f28f0e982e478562de299a5c14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 1533318668}
@@ -13139,7 +13139,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 496119537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f34ed108d613a2428360562cf619bac, type: 3}
+  m_Script: {fileID: 11500000, guid: e0496f28f0e982e478562de299a5c14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 1533318668}
@@ -15295,7 +15295,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 846871613}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f23e052a0819554582a27088f1d4b58, type: 3}
+  m_Script: {fileID: 11500000, guid: e0496f28f0e982e478562de299a5c14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 911147872}
@@ -21251,7 +21251,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0, b: 0, a: 1}
+      maxColor: {r: 1, g: 0.48155445, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.9811321, g: 0, b: 0.09379542, a: 1}
@@ -21629,7 +21629,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 30000
+    maxNumParticles: 15000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -21765,7 +21765,7 @@ ParticleSystem:
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
-    m_Texture: {fileID: 2800000, guid: 411df0d40e2938b40ae124242829e69b, type: 3}
+    m_Texture: {fileID: 2800000, guid: 5a8358d959c80c74085977b65e2c0de6, type: 3}
     m_TextureClipChannel: 3
     m_TextureClipThreshold: 0
     m_TextureUVChannel: 0
@@ -22510,7 +22510,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 411df0d40e2938b40ae124242829e69b, type: 3}
+    - sprite: {fileID: 21300000, guid: 5a8358d959c80c74085977b65e2c0de6, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -26963,7 +26963,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1436009010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f23e052a0819554582a27088f1d4b58, type: 3}
+  m_Script: {fileID: 11500000, guid: e0496f28f0e982e478562de299a5c14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 911147872}
@@ -32553,7 +32553,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1636210823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f23e052a0819554582a27088f1d4b58, type: 3}
+  m_Script: {fileID: 11500000, guid: e0496f28f0e982e478562de299a5c14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 911147872}
@@ -33894,7 +33894,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1900785238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f34ed108d613a2428360562cf619bac, type: 3}
+  m_Script: {fileID: 11500000, guid: e0496f28f0e982e478562de299a5c14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 1533318668}
@@ -35231,7 +35231,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2090250762}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f34ed108d613a2428360562cf619bac, type: 3}
+  m_Script: {fileID: 11500000, guid: e0496f28f0e982e478562de299a5c14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 1533318668}
