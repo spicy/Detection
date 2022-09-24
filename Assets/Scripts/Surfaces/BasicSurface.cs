@@ -1,14 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
-
-// user input starts main scanner
-// main scanner explains how we should emit particles from a ray we shoot from the player camera
-// 
-
 
 namespace Detection
 {
-    public class PathSurface : MonoBehaviour, IScannable
+    public class BasicSurface : MonoBehaviour, IScannable
     {
         [SerializeField] ParticleSystem _particleSystem;
         void IScannable.EmitParticle(Vector3 position, ParticleSystem overrideParticleSystem)

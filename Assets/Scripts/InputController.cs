@@ -20,10 +20,8 @@ namespace Detection
         void Start()
         {
             mainScanner = gameObject.GetComponent(typeof(LookScanner)) as LookScanner;
-
             StartCoroutine(ShootInterval());
 
-            // start song
             FindObjectOfType<MusicManager>().PlayNextSongInList();
         }
 
@@ -32,13 +30,14 @@ namespace Detection
             while (true)
             {
                 yield return null;
-                ((IScans)mainScanner).Scan(aimPos);
+                mainScanner.Scan(aimPos);
             }
         }
 
         // Update is called once per frame
         void Update()
         {
+            // for some reason this isnt actually a centered vector for our view... I decided to use temporary offsets until this is fixed..
             Ray eyePos = cam.ScreenPointToRay(new Vector3((Screen.width / 2), (Screen.height / 2), 0));
             aimPos.x = eyePos.direction.x + tempOffsetX;
             aimPos.y = eyePos.direction.y + tempOffsetY;
