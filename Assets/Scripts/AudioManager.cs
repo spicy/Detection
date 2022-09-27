@@ -3,6 +3,7 @@ using UnityEngine.Audio;
 using UnityEngine;
 using System.Collections.Generic;
 
+// Usage example; FindObjectOfType<AudioManager>();
 public class AudioManager : MonoBehaviour
 {
 	public static AudioManager manager;

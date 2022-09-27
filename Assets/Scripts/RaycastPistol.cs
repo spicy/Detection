@@ -34,6 +34,7 @@ public class RaycastPistol : Weapon, IShootable, IReloadable, IShootsParticle
         {
             Ray ray = new(bulletSpawn.position, bulletSpawn.forward);
             ShootAndEmitParticle(ray);
+            FindObjectOfType<AudioManager>().Play("beretta_shot");
             //Recoil();
         }
     }
