@@ -15117,7 +15117,6 @@ GameObject:
   - component: {fileID: 670406744}
   - component: {fileID: 670406748}
   - component: {fileID: 670406742}
-  - component: {fileID: 670406743}
   - component: {fileID: 670406747}
   m_Layer: 9
   m_Name: Pistol
@@ -15138,22 +15137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2cd5632e3ff6444ebdf340566516999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunData: {fileID: 11400000, guid: 39d6ca67c1d338646a6b3627047f3d76, type: 2}
-  bulletSpawn: {fileID: 439104160}
-  _particleSystem: {fileID: 698866197}
---- !u!114 &670406743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670406741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 2118922617}
+  m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayerMask:
     serializedVersion: 2
@@ -15161,7 +15145,7 @@ MonoBehaviour:
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
-  m_SelectMode: 0
+  m_SelectMode: 1
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
     m_PersistentCalls:
@@ -15261,6 +15245,11 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+  secondGrabPoint: {fileID: 0}
+  twoHand: 0
+  gunData: {fileID: 11400000, guid: 39d6ca67c1d338646a6b3627047f3d76, type: 2}
+  bulletSpawn: {fileID: 439104160}
+  _particleSystem: {fileID: 698866197}
 --- !u!54 &670406744
 Rigidbody:
   m_ObjectHideFlags: 0

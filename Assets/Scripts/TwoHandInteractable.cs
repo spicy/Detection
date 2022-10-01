@@ -7,7 +7,8 @@ public class TwoHandInteractable : XRGrabInteractable
 {
     [SerializeField] private Transform secondGrabPoint;
     [SerializeField] private bool twoHand;
-    
+    private bool isTwoHanded;
+
 
     protected override void Awake()
     {

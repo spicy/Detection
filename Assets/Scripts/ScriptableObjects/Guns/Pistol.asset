@@ -16,7 +16,8 @@ MonoBehaviour:
   damage: 40
   range: 50
   fireRate: 5
-  currentAmmo: 10
+  recoilForce: 0
+  currentAmmo: 20
   maxAmmo: 200
   reloadTime: 1.5
   isReloading: 0

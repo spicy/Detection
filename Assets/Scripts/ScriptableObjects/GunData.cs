@@ -10,6 +10,7 @@ public class GunData : ScriptableObject
     public float damage;
     public float range;
     public float fireRate;
+    public float recoilForce;
 
     [Header("Reloading")]
     public int      currentAmmo;
