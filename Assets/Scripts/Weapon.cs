@@ -2,17 +2,21 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 
-
-public class Weapon : MonoBehaviour
+public class Weapon : TwoHandInteractable
 {
-    private XRGrabInteractable weapon;
     [SerializeField] protected GunData gunData;
+    protected XRGrabInteractable weapon;
+    protected Rigidbody rigidBody;
+    protected Transform firstHand;
+    protected Transform secondHand;
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         weapon = GetComponent<XRGrabInteractable>();
+        rigidBody = GetComponent<Rigidbody>();
         SetupInteractions();
-    }
+    } 
 
     protected virtual void SetupInteractions()
     {
@@ -20,9 +24,16 @@ public class Weapon : MonoBehaviour
         weapon.deactivated.AddListener(StopAttacking);
     }
 
+    protected override void OnDestroy() 
+    {
+        base.OnDestroy();
+        weapon.activated.RemoveListener(StartAttacking);
+        weapon.deactivated.RemoveListener(StopAttacking);
+    }
+
     protected virtual void StartAttacking(ActivateEventArgs args)
     {
-
+        
     }
 
     protected virtual void StopAttacking(DeactivateEventArgs args)
@@ -30,9 +41,5 @@ public class Weapon : MonoBehaviour
       
     }
 
-    protected virtual void Recoil()
-    {
-
-    }
     
 }
