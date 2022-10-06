@@ -3,7 +3,6 @@ using UnityEngine;
 using Detection;
 using UnityEngine.XR.Interaction.Toolkit;
 
-
 public class RaycastPistol : Weapon, IShootable, IShootsParticle
 {
     [SerializeField] private Transform bulletSpawn;

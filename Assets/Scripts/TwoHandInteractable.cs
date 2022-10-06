@@ -1,53 +1,75 @@
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine;
 
-
 [CanSelectMultiple(true)]
 public class TwoHandInteractable : XRGrabInteractable
 {
     [SerializeField] private Transform secondGrabPoint;
-    [SerializeField] private bool twoHand;
-    private bool isTwoHanded;
-
+    [SerializeField] private bool twoHandable;
+    [SerializeField] private bool secondHandDeterminesRotation;
+    private bool isHoldingWithBothHands = false;
 
     protected override void Awake()
     {
         base.Awake();
-        if(!twoHand)
+        if(!twoHandable)
             selectMode = InteractableSelectMode.Single;
     }
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
     {
-        if(interactorsSelecting.Count == 1)
+        if (isHoldingWithBothHands && updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic)
         {
-            isTwoHanded = false;
-            base.ProcessInteractable(updatePhase);
+            if (secondHandDeterminesRotation) HandleDoubleGripRotation();
         }
-        else if(interactorsSelecting.Count == 2 && updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic)
+        else
         {
-            isTwoHanded = true;
-            HandleDoubleGrip();
+            base.ProcessInteractable(updatePhase);
         }
     }
 
     protected override void Grab()
     {
-        if(interactorsSelecting.Count == 1)
+        IXRInteractable gun = (IXRInteractable)interactorsSelecting[0].interactablesSelected[0];
+        IXRInteractor hand = (IXRInteractor)interactorsSelecting[0];
+
+        if (interactorsSelecting.Count == 2)
         {
+            //set the hand we just grabbed with to secondary
+            interactorsSelecting[1].transform.GetComponentInChildren<HandBoneData>().poseType = HandBoneData.HandModelPose.Secondary;
+            isHoldingWithBothHands = true;
+        }
+        else
+        {
+            //set the hand we just grabbed with to primary
+            interactorsSelecting[0].transform.GetComponentInChildren<HandBoneData>().poseType = HandBoneData.HandModelPose.Primary;
             base.Grab();
         }
+
+        GetComponentInParent<GrabPistolHandPose>().SetupPose(gun, hand);
     }
 
     protected override void Drop()
     {
-        if(!isSelected)
+        isHoldingWithBothHands = false;
+
+        if (interactorsSelecting.Count == 1)
+        {
+            IXRInteractable gun = (IXRInteractable)interactorsSelecting[0].interactablesSelected[0];
+            IXRInteractor hand = (IXRInteractor)interactorsSelecting[0];
+
+            // set the now only hand holding the gun to primary and reset the hand animation
+            hand.transform.GetComponentInChildren<HandBoneData>().poseType = HandBoneData.HandModelPose.Primary;
+            GetComponentInParent<GrabPistolHandPose>().SetupPose(gun, hand);
+        }
+
+        if (!isSelected)
         {
             base.Drop();
         }
     }
 
-    private void HandleDoubleGrip()
+    private void HandleDoubleGripRotation()
     {
         Transform firstAttach = GetAttachTransform(null);
         Transform firstHand = interactorsSelecting[0].transform;
@@ -58,10 +80,10 @@ public class TwoHandInteractable : XRGrabInteractable
 
         Quaternion targetRotation = Quaternion.LookRotation(handDir, firstHand.up);
 
-        Vector3 HandBaseWorldDir = transform.position - firstAttach.position;
-        Vector3 HandBaseLocalDir = transform.InverseTransformDirection(HandBaseWorldDir);
+        Vector3 handBaseWorldDir = transform.position - firstAttach.position;
+        Vector3 handBaseLocalDir = transform.InverseTransformDirection(handBaseWorldDir);
 
-        Vector3 targetPosition = firstHand.position + targetRotation * HandBaseLocalDir;
+        Vector3 targetPosition = firstHand.position + targetRotation * handBaseLocalDir;
 
         transform.SetPositionAndRotation(targetPosition, targetRotation);
     }
