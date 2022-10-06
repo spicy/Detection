@@ -43618,10 +43618,10 @@ MonoBehaviour:
     audioMxrGroup: {fileID: 0}
     loop: 0
     source: {fileID: 0}
-    volume: 0.687
-    volumeDeviation: 0.114
+    volume: 0.75
+    volumeDeviation: 0.125
     pitch: 1
-    pitchDeviation: 0.057
+    pitchDeviation: 0.125
 --- !u!4 &2115070598
 Transform:
   m_ObjectHideFlags: 0

@@ -31,18 +31,21 @@ public class TwoHandInteractable : XRGrabInteractable
     protected override void Grab()
     {
         IXRInteractable gun = (IXRInteractable)interactorsSelecting[0].interactablesSelected[0];
-        IXRInteractor hand = (IXRInteractor)interactorsSelecting[0];
+        IXRInteractor hand;
 
         if (interactorsSelecting.Count == 2)
-        {
+        {            
             //set the hand we just grabbed with to secondary
-            interactorsSelecting[1].transform.GetComponentInChildren<HandBoneData>().poseType = HandBoneData.HandModelPose.Secondary;
+            hand = (IXRInteractor)interactorsSelecting[1];
+            hand.transform.GetComponentInChildren<HandBoneData>().poseType = HandBoneData.HandModelPose.Secondary;   
+
             isHoldingWithBothHands = true;
         }
         else
         {
             //set the hand we just grabbed with to primary
-            interactorsSelecting[0].transform.GetComponentInChildren<HandBoneData>().poseType = HandBoneData.HandModelPose.Primary;
+            hand = (IXRInteractor)interactorsSelecting[0];
+            hand.transform.GetComponentInChildren<HandBoneData>().poseType = HandBoneData.HandModelPose.Primary;
             base.Grab();
         }
 
