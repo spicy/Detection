@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f6f6d7125d4a034ba6dd2d0989ea1ef, type: 3}
-  m_Name: Pistol
+  m_Name: AK47
   m_EditorClassIdentifier: 
-  name: Pistol
+  name: 
   damage: 40
   range: 50
-  fireRate: 5
+  fireRate: 10
   recoilForce: 0
-  startingAmmo: 30
+  startingAmmo: 60
   maxAmmo: 200

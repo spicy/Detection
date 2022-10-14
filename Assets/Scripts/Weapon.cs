@@ -7,8 +7,6 @@ public class Weapon : TwoHandInteractable
     [SerializeField] protected GunData gunData;
     protected XRGrabInteractable weapon;
     protected Rigidbody rigidBody;
-    protected Transform firstHand;
-    protected Transform secondHand;
 
     protected override void Awake()
     {
@@ -16,7 +14,7 @@ public class Weapon : TwoHandInteractable
         weapon = GetComponent<XRGrabInteractable>();
         rigidBody = GetComponent<Rigidbody>();
         SetupInteractions();
-    } 
+    }
 
     protected virtual void SetupInteractions()
     {
@@ -24,7 +22,7 @@ public class Weapon : TwoHandInteractable
         weapon.deactivated.AddListener(StopAttacking);
     }
 
-    protected override void OnDestroy() 
+    protected override void OnDestroy()
     {
         base.OnDestroy();
         weapon.activated.RemoveListener(StartAttacking);
@@ -33,13 +31,11 @@ public class Weapon : TwoHandInteractable
 
     protected virtual void StartAttacking(ActivateEventArgs args)
     {
-        
+
     }
 
     protected virtual void StopAttacking(DeactivateEventArgs args)
     {
-      
-    }
 
-    
+    }
 }

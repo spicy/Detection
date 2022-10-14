@@ -13,9 +13,6 @@ public class GunData : ScriptableObject
     public float recoilForce;
 
     [Header("Reloading")]
-    public int      currentAmmo;
+    public int      startingAmmo;
     public int      maxAmmo;
-    public float    reloadTime;
-    [HideInInspector]
-    public bool     isReloading;
 }

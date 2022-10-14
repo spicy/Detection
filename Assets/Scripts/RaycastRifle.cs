@@ -1,13 +1,15 @@
+using System.Collections;
 using UnityEngine;
 using Detection;
 
-public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle
+public class RaycastRifle : TwoHandInteractable, IShootable, IShootsParticle
 {
-    [SerializeField] private GunData gunData;
+    [SerializeField] protected GunData gunData;
     [SerializeField] private Transform bulletSpawn;
     [SerializeField] private ParticleSystem _particleSystem;
-    private AudioManager audioManager;
     private int currentAmmo;
+    private WaitForSeconds waitTime;
+    private AudioManager audioManager;
 
     protected override void Awake()
     {
@@ -17,26 +19,41 @@ public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle
 
     private void Start()
     {
+        waitTime = new WaitForSeconds(1f / gunData.fireRate);
         currentAmmo = gunData.startingAmmo;
     }
 
     public override void StartObjectAction()
     {
-        Shoot();
+        StartCoroutine(ShootingRoutine());
+    }
+
+    public override void StopObjectAction()
+    {
+        StopAllCoroutines();
     }
 
     public void Shoot()
     {
-        if(currentAmmo > 0)
+        if (currentAmmo > 0)
         {
             Ray ray = new(bulletSpawn.position, bulletSpawn.forward);
             ShootAndEmitParticle(ray);
-            audioManager.Play("beretta_shot");
+            audioManager.Play("ak47_shot");
             --currentAmmo;
         }
         else
         {
             audioManager.Play("gun_empty");
+        }
+    }
+
+    private IEnumerator ShootingRoutine()
+    {
+        while (true)
+        {
+            Shoot();
+            yield return waitTime;
         }
     }
 
@@ -50,10 +67,10 @@ public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle
     public void ShootAndEmitParticle(Ray ray)
     {
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, gunData.range))
+        if (Physics.Raycast(ray, out hit, gunData.range))
         {
             ITakeDamage damageTaker = hit.collider.GetComponent<ITakeDamage>();
-            if(damageTaker != null)
+            if (damageTaker != null)
             {
                 damageTaker.TakeDamage(gunData.damage);
             }
