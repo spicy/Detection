@@ -52,8 +52,14 @@ public class RaycastRifle : TwoHandInteractable, IShootable, IShootsParticle
     {
         while (true)
         {
+            if(PrimaryInteractor == null)
+            {
+                StopCoroutine(ShootingRoutine());
+                break;
+            }
             Shoot();
             yield return waitTime;
+            
         }
     }
 
