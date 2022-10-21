@@ -21,7 +21,7 @@ namespace Detection
             mainScanner = gameObject.GetComponent(typeof(LookScanner)) as LookScanner;
             StartCoroutine(ShootInterval());
 
-            FindObjectOfType<MusicManager>().PlayNextSongInList();
+            FindObjectOfType<MusicManager>().PlayNextSongInOrder();
         }
 
         private IEnumerator ShootInterval()
