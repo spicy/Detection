@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,9 +10,15 @@ public class MusicManager : MonoBehaviour
 	public static MusicManager musicManager;
 	public AudioMixerGroup audioMxrGroup;
 	public List<Sound> musicList;
+	public bool randomize = false;
+
 	private int currentSongIndex = 0;
+	private List<Sound> haventPlayedList;
+
 	void Awake()
 	{
+		haventPlayedList = new List<Sound>();
+
 		// Ensure only one manager exists
 		if (musicManager == null)
 		{
@@ -25,8 +32,9 @@ public class MusicManager : MonoBehaviour
 			sound.source = gameObject.AddComponent<AudioSource>();
 			sound.source.clip = sound.clip;
 			sound.source.loop = sound.loop;
-
 			sound.source.outputAudioMixerGroup = audioMxrGroup;
+
+			haventPlayedList.Add(sound);
 		}
 	}
 
@@ -45,17 +53,36 @@ public class MusicManager : MonoBehaviour
 		sound.volume = startVolume;
 	}
 
-	public bool PlayNextSongInList()
+	public bool PlayNextSongInOrder()
 	{
 		if (currentSongIndex + 1 > musicList.Count) return false;
 
+		if (currentSongIndex == 0)
+        {
+			musicList[currentSongIndex].source.Play();
+			StartCoroutine(VerifyPlaying());
+			return true;
+		}
+
 		FadeOut(musicList[currentSongIndex], 1);
-		currentSongIndex += 1;
-		musicList[currentSongIndex].source.Play();
-		
+		musicList[++currentSongIndex].source.Play();
+		Debug.Log("played song " + musicList[currentSongIndex].source.name);
+
 		StartCoroutine(VerifyPlaying());
 		return true;
 	}
+
+	public bool PlayNextSongRandom()
+    {
+		if (haventPlayedList.Count == 0) return false;
+
+		var random = new System.Random();
+		int index = random.Next(haventPlayedList.Count);
+		haventPlayedList[index].source.Play();
+		Debug.Log("played song " + haventPlayedList[index].source.name);
+		haventPlayedList.RemoveAt(index);
+		return true;
+    }
 
 	IEnumerator VerifyPlaying()
 	{
@@ -64,8 +91,16 @@ public class MusicManager : MonoBehaviour
 			yield return new WaitForSeconds(1f);
 			if (!musicList[currentSongIndex].source.isPlaying)
             {
-				if (PlayNextSongInList()) Debug.Log("switched to next song");
-				else Debug.Log("no songs left to play for this level");
+				if (randomize)
+                {
+					if (PlayNextSongRandom()) Debug.Log("switched to next random song");
+					else Debug.Log("no songs left to play");
+				}
+				else
+                {
+					if (PlayNextSongInOrder()) Debug.Log("switched to next song");
+					else Debug.Log("no songs left to play for this level");
+				}
 			}
 		}
 	}
