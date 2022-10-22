@@ -13143,6 +13143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 322439257}
   - component: {fileID: 322439256}
+  - component: {fileID: 322439258}
   m_Layer: 0
   m_Name: MusicManager
   m_TagString: Untagged
@@ -13209,6 +13210,7 @@ MonoBehaviour:
     volumeDeviation: 0
     pitch: 1
     pitchDeviation: 0
+  randomize: 0
 --- !u!4 &322439257
 Transform:
   m_ObjectHideFlags: 0
@@ -13224,6 +13226,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &322439258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322439255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f771fd3eb9747f4dbc52e4d45543614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minLoudness: 0
+  maxLoudness: 250
+  updateStep: 0.01
+  sampleDataLength: 512
+  sizeFactor: 1
+  currentLoudness: 0
 --- !u!1 &331293846
 GameObject:
   m_ObjectHideFlags: 0
