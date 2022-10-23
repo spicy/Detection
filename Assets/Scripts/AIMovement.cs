@@ -27,7 +27,7 @@ public class AIMovement : MonoBehaviour
 
     float DelayTime;                               //  Variable of the wait time that makes the delay
     float Rotate;                           //  Variable of the wait time to rotate when the player is near that makes the delay
-    bool playerInRange;                           //  If the player is in range of vision, state of chasing
+    bool playerIsInRange;                           //  If the player is in range of vision, state of chasing
     bool PlayerIsNear;                              //  If the player is near, state of hearing
     bool Patrolling;                                //  If the enemy is patrol, state of patrolling
     bool PlayerCaught;                            //  if the enemy has caught the player
@@ -37,7 +37,7 @@ public class AIMovement : MonoBehaviour
         PlayerPosition = Vector3.zero;
         Patrolling = true;
         PlayerCaught = false;
-        playerInRange = false;
+        playerIsInRange = false;
         PlayerIsNear = false;
         DelayTime = WaitingTime;                 //  Set the wait time variable that will change
         Rotate = RotationTime;
@@ -73,7 +73,7 @@ public class AIMovement : MonoBehaviour
         if (!PlayerCaught)
         {
             Move(RunningSpeed);
-            navMeshAgent.SetDestination(m_PlayerPosition);          //  set the destination of the enemy to the player last location
+            navMeshAgent.SetDestination(PlayerPosition);          //  set the destination of the enemy to the player last location
         }
         if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)    //  Control if the enemy arrive to the player location
         {
@@ -199,22 +199,22 @@ public class AIMovement : MonoBehaviour
                 float dstToPlayer = Vector3.Distance(transform.position, player.position);          //  Distance of the enemy and the player
                 if (!Physics.Raycast(transform.position, dirToPlayer, dstToPlayer, obstacle))
                 {
-                    playerInRange = true;             //  The player has been seeing by the enemy and then the nemy starts to chasing the player
+                    playerIsInRange = true;             //  The player has been seeing by the enemy and then the nemy starts to chasing the player
                     Patrolling = false;                 //  Change the state to chasing the player
                 }
                 else
                 {
                                                  //If the player is behind a obstacle the player position will not be registered
-                   playerInRange = false;
+                   playerIsInRange = false;
                 }
             }
             if (Vector3.Distance(transform.position, player.position) > EnemyRadius)
             {            
                   //If the player is further than the view radius, then the enemy will no longer keep the player's current position.
                   
-                playerInRange = false;                //  Changes the state of a chasing enemy
+                playerIsInRange = false;                //  Changes the state of a chasing enemy
             }
-            if (playerInRange)
+            if (playerIsInRange)
             {
                 
                   //If the enemy no longer sees the player, then the enemy will go to the last position that has been registered
