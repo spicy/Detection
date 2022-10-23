@@ -1,22 +1,20 @@
-using Detection;
 using UnityEngine;
+using Detection;
 
 public class Combatant : MonoBehaviour, ITakeDamage
 {
-    [SerializeField] float health;
+    protected float health;
+    protected float maxHealth;
+
     public void TakeDamage(float damage)
     {
         health -= damage;
-        if(health <= 0)
-        {
+        if (health <= 0)
             Die();
-        }
     }
 
-
-    public void Die()
+    public virtual void Die()
     {
-        //gameObject.SetActive(false);
-        Destroy(gameObject);
+
     }
 }
