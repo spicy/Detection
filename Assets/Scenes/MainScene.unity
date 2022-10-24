@@ -13252,10 +13252,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minLoudness: 0.01
-  maxLoudness: 0.1
+  maxLoudness: 0.07
   updateStep: 0.01
   sampleDataLength: 512
-  sizeFactor: 0.3
+  sizeFactor: 0.15
   currentLoudness: 0
 --- !u!1 &331293846
 GameObject:
