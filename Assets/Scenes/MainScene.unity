@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 1533318668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &30558306
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5094,6 +5095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &42564984
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5205,6 +5207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &47369715
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5322,6 +5325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &79455942
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5433,6 +5437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &80469727
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6313,6 +6318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &124122710
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6424,6 +6430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 1533318668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &153230991
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6535,6 +6542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &153871247
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6648,6 +6656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &161916310
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6759,6 +6768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &166161298
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7002,6 +7012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &196073488
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7113,6 +7124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &205497134
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8093,6 +8105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &240921090
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13165,21 +13178,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMxrGroup: {fileID: 0}
   musicList:
-  - name: Test Pilot
-    clip: {fileID: 8300000, guid: 4585c56b2820c32418294e0d6c0b8d1e, type: 3}
-    audioMxrGroup: {fileID: 0}
-    loop: 0
-    source: {fileID: 0}
-    volume: 0.204
-    volumeDeviation: 0
-    pitch: 1
-    pitchDeviation: 0
   - name: Boss at Nova
     clip: {fileID: 8300000, guid: f7804525fa5b137418ff216f1da1edf5, type: 3}
     audioMxrGroup: {fileID: 0}
     loop: 0
     source: {fileID: 0}
     volume: 0.238
+    volumeDeviation: 0
+    pitch: 1
+    pitchDeviation: 0
+  - name: Test Pilot
+    clip: {fileID: 8300000, guid: 4585c56b2820c32418294e0d6c0b8d1e, type: 3}
+    audioMxrGroup: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+    volume: 0.204
     volumeDeviation: 0
     pitch: 1
     pitchDeviation: 0
@@ -13238,11 +13251,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f771fd3eb9747f4dbc52e4d45543614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minLoudness: 0
-  maxLoudness: 250
+  minLoudness: 0.01
+  maxLoudness: 0.1
   updateStep: 0.01
   sampleDataLength: 512
-  sizeFactor: 1
+  sizeFactor: 0.3
   currentLoudness: 0
 --- !u!1 &331293846
 GameObject:
@@ -13326,6 +13339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &331545447
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14388,7 +14402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 339553541}
-  tempOffsetX: 450
+  tempOffsetX: 600
   tempOffsetY: 250
 --- !u!114 &339553544
 MonoBehaviour:
@@ -14403,10 +14417,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 339553541}
-  numParticlesPerScan: 130
-  sprayAngleX: 100
-  sprayAngleY: 70
-  maxRayDistance: 22
+  numParticlesPerScan: 150
+  sprayAngleX: 180
+  sprayAngleY: 150
+  maxRayDistance: 40
 --- !u!114 &339553545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14704,6 +14718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &357363695
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14815,6 +14830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &359231330
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15122,6 +15138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &381660007
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15233,6 +15250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &427831099
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15344,6 +15362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &428586759
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15738,6 +15757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &470019708
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15849,6 +15869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 1533318668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &471086185
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15960,6 +15981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &482035869
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16071,6 +16093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 1533318668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &496119540
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16222,6 +16245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &543376683
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16459,6 +16483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &571477641
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16698,6 +16723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &615909233
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16809,6 +16835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &631483402
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16920,6 +16947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &658695423
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17274,6 +17302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &676004100
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17985,6 +18014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &693640827
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22910,6 +22940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &742260323
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23362,6 +23393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &846623969
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23473,6 +23505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &846655910
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23584,6 +23617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 911147872}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!136 &846871616
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -23696,6 +23730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &851111922
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23807,6 +23842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &876929587
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28852,6 +28888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1003434149
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28963,6 +29000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1052479851
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29074,6 +29112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1057682757
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29216,6 +29255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1087929346
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34147,6 +34187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1149120431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34956,6 +34997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1181023774
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35067,6 +35109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1183681700
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35288,6 +35331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1252754492
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35399,6 +35443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1264249194
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35553,6 +35598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1355792844
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35670,6 +35716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1383664985
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35781,6 +35828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1433080671
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35892,6 +35940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1435416322
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36003,6 +36052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 911147872}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!136 &1436009013
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -36115,6 +36165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1465265231
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36226,6 +36277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1476179666
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41155,6 +41207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1573267068
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41272,6 +41325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1612757993
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41383,6 +41437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1619373094
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41622,6 +41677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1633925642
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41733,6 +41789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 911147872}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!136 &1636210826
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -41845,6 +41902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1638571567
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42082,6 +42140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1679664337
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42224,6 +42283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1707375390
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42463,6 +42523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1725572649
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42574,6 +42635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1737008098
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42759,6 +42821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1787916134
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42879,6 +42942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1788388155
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42990,6 +43054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1807533532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43110,6 +43175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1812467478
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44166,6 +44232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 1533318668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1900785241
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44277,6 +44344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1913537318
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44388,6 +44456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1919972585
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44499,6 +44568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1923330615
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44612,6 +44682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1949917051
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44723,6 +44794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1957449873
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44836,6 +44908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &1964776882
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46058,6 +46131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &2003583015
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46175,6 +46249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &2011485277
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46286,6 +46361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &2021669156
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46397,6 +46473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &2045666590
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46572,6 +46649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 245441668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!1 &2090250762
 GameObject:
   m_ObjectHideFlags: 0
@@ -46620,6 +46698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 1533318668}
+  musicAnalyzer: {fileID: 322439258}
 --- !u!65 &2090250765
 BoxCollider:
   m_ObjectHideFlags: 0
