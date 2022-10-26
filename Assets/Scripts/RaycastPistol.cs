@@ -6,14 +6,7 @@ public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle
     [SerializeField] private GunData gunData;
     [SerializeField] private Transform bulletSpawn;
     [SerializeField] private ParticleSystem _particleSystem;
-    private AudioManager audioManager;
     private int currentAmmo;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        audioManager = FindObjectOfType<AudioManager>();
-    }
 
     private void Start()
     {
@@ -31,12 +24,12 @@ public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle
         {
             Ray ray = new(bulletSpawn.position, bulletSpawn.forward);
             ShootAndEmitParticle(ray);
-            audioManager.Play("beretta_shot");
+            AudioManager.manager.Play("beretta_shot");
             --currentAmmo;
         }
         else
         {
-            audioManager.Play("gun_empty");
+            AudioManager.manager.Play("gun_empty");
         }
     }
 

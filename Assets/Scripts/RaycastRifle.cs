@@ -9,13 +9,6 @@ public class RaycastRifle : TwoHandInteractable, IShootable, IShootsParticle
     [SerializeField] private ParticleSystem _particleSystem;
     private int currentAmmo;
     private WaitForSeconds waitTime;
-    private AudioManager audioManager;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        audioManager = FindObjectOfType<AudioManager>();
-    }
 
     private void Start()
     {
@@ -39,12 +32,12 @@ public class RaycastRifle : TwoHandInteractable, IShootable, IShootsParticle
         {
             Ray ray = new(bulletSpawn.position, bulletSpawn.forward);
             ShootAndEmitParticle(ray);
-            audioManager.Play("ak47_shot");
+            AudioManager.manager.Play("ak47_shot");
             --currentAmmo;
         }
         else
         {
-            audioManager.Play("gun_empty");
+            AudioManager.manager.Play("gun_empty");
         }
     }
 
@@ -52,11 +45,8 @@ public class RaycastRifle : TwoHandInteractable, IShootable, IShootsParticle
     {
         while (true)
         {
-            if(PrimaryInteractor == null)
-            {
-                StopCoroutine(ShootingRoutine());
-                break;
-            }
+            if (PrimaryInteractor == null) yield break;
+
             Shoot();
             yield return waitTime;
             
