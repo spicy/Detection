@@ -14,19 +14,17 @@ public class TwoHandInteractable : XRGrabInteractable
 {
     private PrimaryHold pHold = null;
     protected IXRInteractor PrimaryInteractor { get; private set; } = null;
+    private HandBoneData primaryHand;
     private SecondaryHold sHold = null;
     protected IXRInteractor SecondaryInteractor { get; private set; } = null;
+    private HandBoneData secondaryHand;
+
     private bool isHoldingWithBothHands = false;
     private Quaternion initalAttachRotation;
     private GrabPistolHandPose handPoseInstance;
     public enum ZAxisRotationType { None, First, Second }
     public ZAxisRotationType rotationType;
     
-    private Transform primaryHandModel;
-    private Quaternion initialPrimaryHandRot;
-    private Transform secondaryHandModel;
-    private Quaternion initialSecondaryHandRot;
-
     protected override void Awake()
     {
         base.Awake();
@@ -60,36 +58,36 @@ public class TwoHandInteractable : XRGrabInteractable
     {
         PrimaryInteractor = args.interactorObject;
         initalAttachRotation = pHold.ObjectHeld.transform.localRotation;
+
         ManualSelect(args);
 
-        // Set primary hand pose
-        PrimaryInteractor.transform.GetComponentInChildren<HandBoneData>().poseType = HandBoneData.HandModelPose.Primary;
+        // Get Hand Model and HandBoneData
+        primaryHand = PrimaryInteractor.transform.GetComponentInChildren<HandBoneData>();
+        primaryHand.poseType = HandBoneData.HandModelPose.Primary;
         handPoseInstance.SetupPose(pHold.ObjectHeld, PrimaryInteractor);
 
-        // Parent the hand model to the Hold to maintain position on object
-        primaryHandModel = PrimaryInteractor.transform.Find("Hand Model");
-        primaryHandModel.transform.parent = pHold.transform;
-        initialPrimaryHandRot = primaryHandModel.transform.rotation;
-
+        // Parent the hand model to hold to maintain position
+        primaryHand.transform.parent = pHold.transform;
+        
         // enable second grab point
         sHold.gameObject.SetActive(true);
     }
 
     public void ClearPrimaryHand(SelectExitEventArgs args)
     {
-        // Reset the hand model parent and rotation
-        primaryHandModel.transform.parent = PrimaryInteractor.transform;
-        primaryHandModel.transform.rotation = initialPrimaryHandRot;
+        // Reset primary hand parent
+        primaryHand.transform.parent = PrimaryInteractor.transform;
 
         // Clear primary hand pose
         handPoseInstance.UnsetPose(pHold.ObjectHeld, PrimaryInteractor);
+
         ManualDeSelect(args);
 
-        // Reset parent of second hand model if both holding
+        // Reset parent of second hand if both hands were holding
         if (isHoldingWithBothHands)
         {
-            secondaryHandModel.transform.parent = SecondaryInteractor.transform;
-            secondaryHandModel.transform.rotation = initialSecondaryHandRot;
+            secondaryHand.transform.parent = SecondaryInteractor.transform;
+            handPoseInstance.UnsetPose(pHold.ObjectHeld, SecondaryInteractor);
         }
 
         sHold.gameObject.SetActive(false);
@@ -102,28 +100,25 @@ public class TwoHandInteractable : XRGrabInteractable
         SecondaryInteractor = args.interactorObject;
         isHoldingWithBothHands = true;
 
-        // Set secondary hand pose
-        SecondaryInteractor.transform.GetComponentInChildren<HandBoneData>().poseType = HandBoneData.HandModelPose.Secondary;
+        // Get secondary hand and set hand pose
+        secondaryHand = SecondaryInteractor.transform.GetComponentInChildren<HandBoneData>();
+        secondaryHand.poseType = HandBoneData.HandModelPose.Secondary;
         handPoseInstance.SetupPose(sHold.ObjectHeld, SecondaryInteractor);
 
-        // Set the hand model as child to the Hold to maintain position on object
-        secondaryHandModel = SecondaryInteractor.transform.Find("Hand Model");
-        secondaryHandModel.transform.parent = sHold.transform;
-        initialSecondaryHandRot = secondaryHandModel.transform.rotation;
+        // Parent secondHand to hold to maintain position
+        secondaryHand.transform.parent = sHold.transform;
     }
 
     public void ClearSecondaryHand(SelectExitEventArgs args)
     {
-        // Reset the hand model parent and rotation
-        secondaryHandModel.transform.parent = SecondaryInteractor.transform;
-        secondaryHandModel.transform.rotation = initialSecondaryHandRot;
+        // Reset the hand parent
+        secondaryHand.transform.parent = SecondaryInteractor.transform;
 
         // Clear secondary hand pose
         handPoseInstance.UnsetPose(sHold.ObjectHeld, SecondaryInteractor);
 
         // Reset the rotation of the gun to initial state
         PrimaryInteractor.GetAttachTransform(pHold.ObjectHeld).localRotation = initalAttachRotation;
-
 
         SecondaryInteractor = null;
         isHoldingWithBothHands = false;
@@ -134,10 +129,8 @@ public class TwoHandInteractable : XRGrabInteractable
         base.ProcessInteractable(updatePhase);
 
         if(isHoldingWithBothHands)
-        {
             PrimaryInteractor.GetAttachTransform(pHold.ObjectHeld).rotation = GetRotation();
-        }
-            
+
     }
 
     private Quaternion GetRotation()
