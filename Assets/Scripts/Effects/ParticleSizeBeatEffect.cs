@@ -11,7 +11,7 @@ namespace Detection
 		public MusicAnalyzer musicAnalyzer;
 		private List<float> startParticleSizes;
 
-		public ParticleSizeBeatEffect(List<ParticleSystem> ps, MusicAnalyzer mAnalyzer) 
+		public void Initialize(List<ParticleSystem> ps, MusicAnalyzer mAnalyzer) 
 		{ 
 			particleSystems = ps;
 			musicAnalyzer = mAnalyzer;
