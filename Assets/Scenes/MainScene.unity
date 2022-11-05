@@ -33329,27 +33329,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1857570432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9c9011fc9aa25e48a90d253198e5d79, type: 3}
+  m_Script: {fileID: 11500000, guid: 8283dc15b43129e4f8da73a4c14efd03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 1857570439}
-  startWaitTime: 4
-  timeToRotate: 2
-  speedWalk: 6
-  speedRun: 9
-  viewRadius: 15
-  viewAngle: 90
-  playerMask:
+  waitingTime: 4.5
+  rotationTime: 2.5
+  walkingSpeed: 3
+  RunningSpeed: 5.5
+  enemyRadius: 15
+  enemyViewAngle: 90
+  player:
     serializedVersion: 2
-    m_Bits: 0
-  obstacleMask:
+    m_Bits: 1
+  obstacle:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2147483647
   meshResolution: 1
   edgeIterations: 4
   edgeDistance: 0.5
   waypoints:
-  - {fileID: 1716801665}
+  - {fileID: 1436009011}
 --- !u!195 &1857570439
 NavMeshAgent:
   m_ObjectHideFlags: 0
