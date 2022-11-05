@@ -15,6 +15,7 @@ namespace Detection
 		{ 
 			particleSystems = ps;
 			musicAnalyzer = mAnalyzer;
+			startParticleSizes = new List<float>();
 		}
 
 		void IEffect.DoEffect(double duration, Action callback) => StartCoroutine(DoParticleSizeBeatEffect(duration, callback));
