@@ -25,9 +25,12 @@ namespace Detection
         private void Awake()
         {
             List<KeyValuePair<IEffect, double>> effectList = new List<KeyValuePair<IEffect, double>>();
-            effectList.Add(new KeyValuePair<IEffect, double>(new ParticleSizeBeatEffect(particleSystems, musicAnalyzer), 10));
+
+            gameObject.AddComponent<ParticleSizeBeatEffect>().Initialize(particleSystems, musicAnalyzer);
+            effectList.Add(new KeyValuePair<IEffect, double>(gameObject.GetComponent<ParticleSizeBeatEffect>(), 10));
 
             // populate the weightedRandom effects bag we can pick from
+            weightedEffectsBag = new WeightedRandom<IEffect>();
             foreach (var x in effectList)
             {
                 weightedEffectsBag.Add(x.Key, x.Value);
