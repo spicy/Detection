@@ -3,8 +3,9 @@ using UnityEngine;
 namespace Detection
 {
     public class BasicSurface : MonoBehaviour, IScannable
-    {
+    { 
         [SerializeField] ParticleSystem _particleSystem;
+
         void IScannable.EmitParticle(Vector3 position, ParticleSystem overrideParticleSystem)
         {
             var emitArgs = new ParticleSystem.EmitParams();
