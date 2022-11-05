@@ -8,7 +8,7 @@ namespace Detection
     {
         [Range(0, 1)]
         [SerializeField] private float loudnessTolerance = 0.8f;
-        [SerializeField] private MusicAnalyzer musicAnalyzer;
+        private MusicAnalyzer musicAnalyzer;
         public List<ParticleSystem> particleSystems;
 
         [Range(0.01f, float.MaxValue)]
@@ -22,8 +22,10 @@ namespace Detection
 
         private WeightedRandom<IEffect> weightedEffectsBag;
 
-        private void Awake()
+        private void Start()
         {
+            musicAnalyzer = MusicManager.musicManager.GetComponent<MusicAnalyzer>();
+
             List<KeyValuePair<IEffect, double>> effectList = new List<KeyValuePair<IEffect, double>>();
 
             gameObject.AddComponent<ParticleSizeBeatEffect>().Initialize(particleSystems, musicAnalyzer);

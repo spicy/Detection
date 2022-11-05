@@ -22,7 +22,6 @@ namespace Detection
         public IEnumerator DoParticleSizeBeatEffect(double duration, Action callback)
 		{
 			double currentTimeCount = 0;
-			
 
 			while (currentTimeCount < duration)
 			{
