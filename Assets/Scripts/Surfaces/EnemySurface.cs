@@ -5,10 +5,10 @@ namespace Detection
     public class EnemySurface : MonoBehaviour, IScannable, IRevealable
     {
         [SerializeField] private ParticleSystem _particleSystem;
-        void IScannable.EmitParticle(Vector3 position, ParticleSystem overrideParticleSystem)
+        void IScannable.EmitParticle(RaycastHit hit, ParticleSystem overrideParticleSystem)
         {
             var emitArgs = new ParticleSystem.EmitParams();
-            emitArgs.position = position;
+            emitArgs.position = hit.point;
             emitArgs.velocity = new Vector3(0.0f, 0.0f, 0.0f);
 
             if (overrideParticleSystem == null)

@@ -3,6 +3,6 @@ namespace Detection
 {
     public interface IScannable
     {
-        public void EmitParticle(Vector3 position, ParticleSystem overrideParticleSystem);
+        public void EmitParticle(RaycastHit hit, ParticleSystem overrideParticleSystem);
     }
 }

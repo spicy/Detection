@@ -54,7 +54,7 @@ public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle
             var scannableObject = hit.collider.GetComponent<IScannable>();
             if (scannableObject == null) return;
 
-            scannableObject.EmitParticle(hit.point, _particleSystem);
+            scannableObject.EmitParticle(hit, _particleSystem);
         }
     }
 }
