@@ -5980,6 +5980,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sawed-Off-Shotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 5961702562182255550, guid: 749d5984427412e40ac0ba5c79a86821,
+        type: 3}
+      propertyPath: _particleSystem
+      value: 
+      objectReference: {fileID: 977510066}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 749d5984427412e40ac0ba5c79a86821, type: 3}
 --- !u!64 &250273149
@@ -29177,6 +29182,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3667148160077364168, guid: b0504efda6f0c9d4ab59a445f9d9c697,
+        type: 3}
+      propertyPath: _particleSystem
+      value: 
+      objectReference: {fileID: 977510066}
     - target: {fileID: 3667148160077364170, guid: b0504efda6f0c9d4ab59a445f9d9c697,
         type: 3}
       propertyPath: m_Name
@@ -78881,6 +78891,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol
       objectReference: {fileID: 0}
+    - target: {fileID: 784367865622422531, guid: 22846db454fc5044cbfc65e80a9e39c9,
+        type: 3}
+      propertyPath: _particleSystem
+      value: 
+      objectReference: {fileID: 977510066}
     - target: {fileID: 784367865622422534, guid: 22846db454fc5044cbfc65e80a9e39c9,
         type: 3}
       propertyPath: m_RootOrder
