@@ -24632,6 +24632,95 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 864602157}
+--- !u!1001 &673061090
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3318769929721549426, guid: ca7ff43f423249b4b97854160ee555b8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318769929721549426, guid: ca7ff43f423249b4b97854160ee555b8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318769929721549426, guid: ca7ff43f423249b4b97854160ee555b8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318769929721549426, guid: ca7ff43f423249b4b97854160ee555b8,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318769929721549426, guid: ca7ff43f423249b4b97854160ee555b8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318769929721549426, guid: ca7ff43f423249b4b97854160ee555b8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318769929721549426, guid: ca7ff43f423249b4b97854160ee555b8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.732
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318769929721549426, guid: ca7ff43f423249b4b97854160ee555b8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318769929721549426, guid: ca7ff43f423249b4b97854160ee555b8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318769929721549426, guid: ca7ff43f423249b4b97854160ee555b8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318769929721549426, guid: ca7ff43f423249b4b97854160ee555b8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0000004768371
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318769929721549426, guid: ca7ff43f423249b4b97854160ee555b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318769929721549426, guid: ca7ff43f423249b4b97854160ee555b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318769929721549426, guid: ca7ff43f423249b4b97854160ee555b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318769929721549426, guid: ca7ff43f423249b4b97854160ee555b8,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318769929721549427, guid: ca7ff43f423249b4b97854160ee555b8,
+        type: 3}
+      propertyPath: m_Name
+      value: Grenade
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca7ff43f423249b4b97854160ee555b8, type: 3}
 --- !u!64 &674976524
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49368,6 +49457,24 @@ MonoBehaviour:
     pitchDeviation: 0.125
   - name: shotgun_shot
     clip: {fileID: 8300000, guid: e377138752ee6eb4ab440cfe93601b60, type: 3}
+    audioMxrGroup: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+    volume: 0.75
+    volumeDeviation: 0.125
+    pitch: 1
+    pitchDeviation: 0.125
+  - name: small_explosion
+    clip: {fileID: 8300000, guid: 2b61f060b2db53744835485f600c7fcb, type: 3}
+    audioMxrGroup: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+    volume: 0.75
+    volumeDeviation: 0.125
+    pitch: 1
+    pitchDeviation: 0.125
+  - name: grenade_pin
+    clip: {fileID: 8300000, guid: db822a32381e91c4f8c71ebc2a90a78b, type: 3}
     audioMxrGroup: {fileID: 0}
     loop: 0
     source: {fileID: 0}
