@@ -5,7 +5,7 @@ using Detection;
 public class RaycastRifle : TwoHandInteractable, IShootable, IShootsParticle
 {
     [SerializeField] protected GunData gunData;
-    [SerializeField] private Transform bulletSpawn;
+    public Transform bulletSpawn;
     [SerializeField] private ParticleSystem _particleSystem;
     private int currentAmmo;
     private WaitForSeconds waitTime;
