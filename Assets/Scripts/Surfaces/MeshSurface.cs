@@ -4,20 +4,19 @@ namespace Detection
 {
     [RequireComponent(typeof(MeshRenderer), typeof(MeshCollider))]
     public class MeshSurface : MonoBehaviour, IScannable
-    { 
-        [SerializeField] ParticleSystem _particleSystem;
-
-        void IScannable.EmitParticle(RaycastHit hit, ParticleSystem overrideParticleSystem)
+    {
+        void IScannable.EmitParticle(RaycastHit hit, VFXEmitArgs overrideArgs)
         {
             try
             {
-                var emitArgs = new ParticleSystem.EmitParams();
-                emitArgs.position = hit.point;
-                emitArgs.velocity = new Vector3(0.0f, 0.0f, 0.0f);
+                Color color = new Color();
+                float lifetime = 5f;
+                float size = 0.015f;
 
-                if (overrideParticleSystem == null)
+                if (overrideArgs.color != null) color = (Color)overrideArgs.color;
+                else
                 {
-                    // Assumes there is a MeshRenderer AND a MeshCollider
+                    // Get the color at the specific point on the mesh texture
                     Renderer renderer = hit.collider.GetComponent<MeshRenderer>();
                     Texture2D texture2D = renderer.material.mainTexture as Texture2D;
                     Vector2 pCoord = hit.textureCoord;
@@ -27,18 +26,14 @@ namespace Detection
                     Vector2 tiling = renderer.material.mainTextureScale;
                     int x = Mathf.FloorToInt(pCoord.x * tiling.x);
                     int y = Mathf.FloorToInt(pCoord.y * tiling.y);
-                    Color color = texture2D.GetPixel(x, y);
-                    emitArgs.startColor = color;
-
-                    if (_particleSystem == null) return;
-                    _particleSystem.Emit(emitArgs, 1);
+                    color = texture2D.GetPixel(x, y);
                 }
-                else overrideParticleSystem.Emit(emitArgs, 1);
+                if (overrideArgs.lifetime != null) lifetime = (float)overrideArgs.lifetime;
+                if (overrideArgs.size != null) size = (float)overrideArgs.size;
+
+                ParticleSpawner.spawner.Spawn(color, hit.point, lifetime, size);
             }
-            catch
-            {
-                int test = 0;
-            }
+            catch {}
         }
     }
 }

@@ -4,7 +4,10 @@ using Detection;
 
 public class DoubleBarrelShotgun : Weapon, IShootable, IShootsParticle
 {
-    [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private Color bulletColor = new Color(240, 208, 81);
+    [SerializeField] private float bulletLifetime = 0.5f;
+    [SerializeField] private float bulletSize = 0.2f;
+
     [SerializeField] private Transform bulletSpawn;
     [SerializeField] private int pelletsPerShot = 7;
     [SerializeField] private float spread;
@@ -66,7 +69,8 @@ public class DoubleBarrelShotgun : Weapon, IShootable, IShootsParticle
             var scannableObject = hit.collider.GetComponent<IScannable>();
             if (scannableObject == null) return;
 
-            scannableObject.EmitParticle(hit, _particleSystem);
+            VFXEmitArgs overrideArgs = new VFXEmitArgs(bulletColor, bulletSize, bulletLifetime);
+            scannableObject.EmitParticle(hit, overrideArgs);
         }
     }
 }
