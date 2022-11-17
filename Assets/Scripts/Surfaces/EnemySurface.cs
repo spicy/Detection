@@ -9,7 +9,7 @@ namespace Detection
         void IScannable.EmitParticle(RaycastHit hit, VFXEmitArgs overrideArgs)
         {
             Color color = defaultColor;
-            float lifetime = 5f;
+            float lifetime = 0.5f;
             float size = 0.015f;
 
             if (overrideArgs.color != null) color = (Color)overrideArgs.color;

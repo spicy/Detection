@@ -7,19 +7,25 @@ namespace Detection
     {
         void IScannable.EmitParticle(RaycastHit hit, VFXEmitArgs overrideArgs)
         {
-            try
-            {
-                Color color = new Color();
-                float lifetime = 5f;
-                float size = 0.015f;
+            Color color = new Color(255, 255, 255);
+            float lifetime = 5f;
+            float size = 0.015f;
 
-                if (overrideArgs.color != null) color = (Color)overrideArgs.color;
-                else
+            Renderer renderer;
+            Texture2D texture2D;
+            Vector2 pCoord;
+
+            if (overrideArgs.color != null) color = (Color)overrideArgs.color;
+            else
+            {
+                // Get the color at the specific point on the mesh texture
+                renderer = hit.collider.GetComponent<MeshRenderer>();
+                texture2D = renderer.material.mainTexture as Texture2D;
+
+                // sometimes not able to get texture2d from texture? in this case we use default color
+                if (texture2D)
                 {
-                    // Get the color at the specific point on the mesh texture
-                    Renderer renderer = hit.collider.GetComponent<MeshRenderer>();
-                    Texture2D texture2D = renderer.material.mainTexture as Texture2D;
-                    Vector2 pCoord = hit.textureCoord;
+                    pCoord = hit.textureCoord;
                     pCoord.x *= texture2D.width;
                     pCoord.y *= texture2D.height;
 
@@ -28,12 +34,11 @@ namespace Detection
                     int y = Mathf.FloorToInt(pCoord.y * tiling.y);
                     color = texture2D.GetPixel(x, y);
                 }
-                if (overrideArgs.lifetime != null) lifetime = (float)overrideArgs.lifetime;
-                if (overrideArgs.size != null) size = (float)overrideArgs.size;
-
-                ParticleSpawner.spawner.Spawn(color, hit.point, lifetime, size);
             }
-            catch {}
+            if (overrideArgs.lifetime != null) lifetime = (float)overrideArgs.lifetime;
+            if (overrideArgs.size != null) size = (float)overrideArgs.size;
+
+            ParticleSpawner.spawner.Spawn(color, hit.point, lifetime, size);
         }
     }
 }

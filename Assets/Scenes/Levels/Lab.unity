@@ -5899,6 +5899,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5961702562182255550, guid: 749d5984427412e40ac0ba5c79a86821,
         type: 3}
+      propertyPath: bulletColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5961702562182255550, guid: 749d5984427412e40ac0ba5c79a86821,
+        type: 3}
+      propertyPath: bulletColor.g
+      value: 0.80158734
+      objectReference: {fileID: 0}
+    - target: {fileID: 5961702562182255550, guid: 749d5984427412e40ac0ba5c79a86821,
+        type: 3}
+      propertyPath: bulletColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5961702562182255550, guid: 749d5984427412e40ac0ba5c79a86821,
+        type: 3}
       propertyPath: _particleSystem
       value: 
       objectReference: {fileID: 0}
@@ -9977,7 +9992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ace109220d8308e4fb23e6e604abcd7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  defaultColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!64 &433305282
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12111,7 +12126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f771fd3eb9747f4dbc52e4d45543614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minLoudness: 0.005
+  minLoudness: 0.019
   maxLoudness: 0.04
   updateStep: 0.01
   sampleDataLength: 512
@@ -12131,6 +12146,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMxrGroup: {fileID: 0}
   musicList:
+  - name: Boss at Nova
+    clip: {fileID: 8300000, guid: f7804525fa5b137418ff216f1da1edf5, type: 3}
+    audioMxrGroup: {fileID: 0}
+    loop: 0
+    source: {fileID: 0}
+    volume: 0.238
+    volumeDeviation: 0
+    pitch: 1
+    pitchDeviation: 0
   - name: Test Pilot
     clip: {fileID: 8300000, guid: 4585c56b2820c32418294e0d6c0b8d1e, type: 3}
     audioMxrGroup: {fileID: 0}
@@ -12146,15 +12170,6 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     volume: 0.234
-    volumeDeviation: 0
-    pitch: 1
-    pitchDeviation: 0
-  - name: Boss at Nova
-    clip: {fileID: 8300000, guid: f7804525fa5b137418ff216f1da1edf5, type: 3}
-    audioMxrGroup: {fileID: 0}
-    loop: 0
-    source: {fileID: 0}
-    volume: 0.238
     volumeDeviation: 0
     pitch: 1
     pitchDeviation: 0
@@ -19379,6 +19394,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3667148160077364168, guid: b0504efda6f0c9d4ab59a445f9d9c697,
+        type: 3}
+      propertyPath: bulletColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667148160077364168, guid: b0504efda6f0c9d4ab59a445f9d9c697,
+        type: 3}
+      propertyPath: bulletColor.g
+      value: 0.80158734
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667148160077364168, guid: b0504efda6f0c9d4ab59a445f9d9c697,
+        type: 3}
+      propertyPath: bulletColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3667148160077364168, guid: b0504efda6f0c9d4ab59a445f9d9c697,
         type: 3}
       propertyPath: _particleSystem
@@ -38573,8 +38603,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1601284901}
-  tempOffsetX: 700
-  tempOffsetY: 300
+  tempOffsetX: 1250
+  tempOffsetY: 650
 --- !u!114 &1601284897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38588,9 +38618,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1601284901}
-  numParticlesPerScan: 900
-  sprayAngleX: 100
-  sprayAngleY: 100
+  numParticlesPerScan: 1800
+  sprayAngleX: 200
+  sprayAngleY: 200
   maxRayDistance: 40
 --- !u!114 &1601284898
 MonoBehaviour:
@@ -54346,6 +54376,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 784367865622422531, guid: 22846db454fc5044cbfc65e80a9e39c9,
         type: 3}
+      propertyPath: bulletColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784367865622422531, guid: 22846db454fc5044cbfc65e80a9e39c9,
+        type: 3}
+      propertyPath: bulletColor.g
+      value: 0.80198026
+      objectReference: {fileID: 0}
+    - target: {fileID: 784367865622422531, guid: 22846db454fc5044cbfc65e80a9e39c9,
+        type: 3}
+      propertyPath: bulletColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 784367865622422531, guid: 22846db454fc5044cbfc65e80a9e39c9,
+        type: 3}
       propertyPath: _particleSystem
       value: 
       objectReference: {fileID: 0}
@@ -54412,7 +54457,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh36352
+  m_Name: pb_Mesh41400
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
