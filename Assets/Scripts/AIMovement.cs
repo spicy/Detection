@@ -57,7 +57,7 @@ public class AIMovement : MonoBehaviour
 
     private void Update()
     {
-        animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
+        //animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
 
         EnviromentView();
 

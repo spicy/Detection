@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   name: Pistol
+  animatorOverrideController: {fileID: 22100000, guid: ac24f9a29f3f43045b31bd3e56126863,
+    type: 2}
   damage: 40
   range: 50
   fireRate: 5
   recoilForce: 0
   startingAmmo: 30
-  maxAmmo: 200
+  maxAmmo: 30
