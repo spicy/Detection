@@ -3,7 +3,22 @@ guid: d17923ecb7c78ed439b324775fa62481
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: guard
+    second: {fileID: 2100000, guid: 881603d9d66822646969676e2eb12388, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: helmet
+    second: {fileID: 2100000, guid: 881603d9d66822646969676e2eb12388, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: visor
+    second: {fileID: 2100000, guid: 881603d9d66822646969676e2eb12388, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
