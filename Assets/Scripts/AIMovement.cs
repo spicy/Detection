@@ -16,6 +16,10 @@ public class AIMovement : MonoBehaviour
     public int edgeIterations = 4;
     public float edgeDistance = 0.5f;
 
+    public float firingrange = 10.0f;
+    public float firingrate = 2.0f;
+    private float firingtime;
+
     public Transform[] waypoints;
     int curWaypoint;
 
@@ -123,6 +127,44 @@ public class AIMovement : MonoBehaviour
                 delayTime -= Time.deltaTime;
             }
         }
+    }
+
+    private void Shooting()                 
+    {
+      playerIsInRange = true;
+        playerLastPosition = Vector3.zero;
+
+        if (enemyRadius >= firingrange)
+        {
+            Move(RunningSpeed);
+            navMeshAgent.SetDestination(playerPosition);
+        }
+
+        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+        {
+            if (delayTime <= 0 && !playerCaught && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f)
+            {
+                patrolling = true;
+                playerIsNear = false;
+
+                Move(RunningSpeed);
+                rotate = rotationTime;
+                delayTime = waitingTime;
+                Move(walkingSpeed);
+                rotate = rotationTime;
+                delayTime = waitingTime;
+                navMeshAgent.SetDestination(waypoints[curWaypoint].position);
+                
+            }
+
+        }
+        else
+        {
+            if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 3.0f) Stop();
+            delayTime -= Time.deltaTime;
+        }
+        
+    
     }
 
     public void NextPoint()
