@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.AI;
 public class AIMovement : MonoBehaviour
 {
+    const string CHASE_TRIGGER = "Chasing";
+    const string WALK_TRIGGER = "Patrolling";
+    const string SHOOT_TRIGGER = "Shooting";
+
     public NavMeshAgent navMeshAgent;
     public float waitingTime = 4.5f;
     public float rotationTime = 2.5f;
@@ -22,6 +26,7 @@ public class AIMovement : MonoBehaviour
 
     public Transform[] waypoints;
     int curWaypoint;
+    private Animator animator;
 
     Vector3 playerLastPosition = Vector3.zero;
     Vector3 playerPosition;
@@ -62,6 +67,9 @@ public class AIMovement : MonoBehaviour
 
     private void Patrolling()
     {
+        animator = GetComponent<Animator>();
+        animator.SetTrigger(WALK_TRIGGER);
+
         if (playerIsNear)
         {
             if (rotate <= 0)
@@ -101,6 +109,8 @@ public class AIMovement : MonoBehaviour
 
     private void Chasing()
     {
+        animator.SetTrigger(CHASE_TRIGGER);
+
         playerIsNear = false;
         playerLastPosition = Vector3.zero;
 
@@ -131,7 +141,9 @@ public class AIMovement : MonoBehaviour
 
     private void Shooting()                 
     {
-      playerIsInRange = true;
+        animator.SetTrigger(SHOOT_TRIGGER);
+
+        playerIsInRange = true;
         playerLastPosition = Vector3.zero;
 
         if (enemyRadius >= firingrange)
