@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Sawed-Off-Shotty
   m_EditorClassIdentifier: 
   name: 
+  animatorOverrideController: {fileID: 22100000, guid: ac24f9a29f3f43045b31bd3e56126863,
+    type: 2}
   damage: 20
   range: 20
   fireRate: 0
