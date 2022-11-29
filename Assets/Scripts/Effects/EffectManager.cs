@@ -6,10 +6,12 @@ namespace Detection
 {
     public class EffectManager : MonoBehaviour
     {
+        public static EffectManager effectManager;
+        public VFXEmitArgs effectEmitArgs;
+
         [Range(0, 1)]
         [SerializeField] private float loudnessTolerance = 0.8f;
         private MusicAnalyzer musicAnalyzer;
-        public List<ParticleSystem> particleSystems;
 
         [Range(0.01f, float.MaxValue)]
         [SerializeField] double minEffectDuration = 0.5;
@@ -22,13 +24,20 @@ namespace Detection
 
         private WeightedRandom<IEffect> weightedEffectsBag;
 
+        private void Awake()
+        {
+            if (effectManager != null && effectManager != this) Destroy(this);
+            else effectManager = this;
+        }
+
         private void Start()
         {
             musicAnalyzer = MusicManager.musicManager.GetComponent<MusicAnalyzer>();
+            effectEmitArgs = new VFXEmitArgs(null, null, null);
 
             List<KeyValuePair<IEffect, double>> effectList = new List<KeyValuePair<IEffect, double>>();
 
-            gameObject.AddComponent<ParticleSizeBeatEffect>().Initialize(particleSystems, musicAnalyzer);
+            gameObject.AddComponent<ParticleSizeBeatEffect>().Initialize(musicAnalyzer);
             effectList.Add(new KeyValuePair<IEffect, double>(gameObject.GetComponent<ParticleSizeBeatEffect>(), 10));
 
             // populate the weightedRandom effects bag we can pick from

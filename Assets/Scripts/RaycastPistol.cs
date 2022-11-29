@@ -3,6 +3,10 @@ using Detection;
 
 public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle
 {
+    [SerializeField] private Color bulletColor = new Color(240, 208, 81);
+    [SerializeField] private float bulletLifetime = 0.5f;
+    [SerializeField] private float bulletSize = 0.15f;
+
     [SerializeField] private GunData gunData;
     [SerializeField] private Transform bulletSpawn;
     [SerializeField] private ParticleSystem _particleSystem;
@@ -54,7 +58,8 @@ public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle
             var scannableObject = hit.collider.GetComponent<IScannable>();
             if (scannableObject == null) return;
 
-            scannableObject.EmitParticle(hit.point, _particleSystem);
+            VFXEmitArgs overrideArgs = new VFXEmitArgs(bulletColor, bulletSize, bulletLifetime);
+            scannableObject.EmitParticle(hit, overrideArgs);
         }
     }
 }

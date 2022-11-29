@@ -3,21 +3,20 @@ using UnityEngine;
 namespace Detection
 {
     public class BasicSurface : MonoBehaviour, IScannable
-    { 
-        [SerializeField] ParticleSystem _particleSystem;
+    {
+        [SerializeField] private Color defaultColor;
 
-        void IScannable.EmitParticle(Vector3 position, ParticleSystem overrideParticleSystem)
+        void IScannable.EmitParticle(RaycastHit hit, VFXEmitArgs overrideArgs)
         {
-            var emitArgs = new ParticleSystem.EmitParams();
-            emitArgs.position = position;
-            emitArgs.velocity = new Vector3(0.0f, 0.0f, 0.0f);
+            Color color = defaultColor;
+            float lifetime = 5f;
+            float size = 0.015f;
 
-            if (overrideParticleSystem == null)
-            {
-                if (_particleSystem == null) return;
-                _particleSystem.Emit(emitArgs, 1);
-            }
-            else overrideParticleSystem.Emit(emitArgs, 1);
+            if (overrideArgs.color != null) color = (Color)overrideArgs.color;
+            if (overrideArgs.lifetime != null) lifetime = (float)overrideArgs.lifetime;
+            if (overrideArgs.size != null) size = (float)overrideArgs.size;
+
+            ParticleSpawner.spawner.Spawn(color, hit.point, lifetime, size);
         }
     }
 }

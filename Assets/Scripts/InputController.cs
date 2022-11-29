@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Detection
 {
+    [RequireComponent(typeof(LookScanner))]
     public class InputController : MonoBehaviour
     {
         [Header("Settings")]
@@ -11,7 +12,6 @@ namespace Detection
 
         private Vector2 aimPos;
         private LookScanner mainScanner;
-
         [SerializeField] private int tempOffsetX;
         [SerializeField] private int tempOffsetY;
 

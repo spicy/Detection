@@ -1,21 +1,16 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Detection
 {
 	public class ParticleSizeBeatEffect : MonoBehaviour, IEffect
 	{
-		public List<ParticleSystem> particleSystems;
 		public MusicAnalyzer musicAnalyzer;
-		private List<float> startParticleSizes;
 
-		public void Initialize(List<ParticleSystem> ps, MusicAnalyzer mAnalyzer) 
+		public void Initialize(MusicAnalyzer mAnalyzer) 
 		{ 
-			particleSystems = ps;
 			musicAnalyzer = mAnalyzer;
-			startParticleSizes = new List<float>();
 		}
 
 		void IEffect.DoEffect(double duration, Action callback) => StartCoroutine(DoParticleSizeBeatEffect(duration, callback));
@@ -26,21 +21,12 @@ namespace Detection
 
 			while (currentTimeCount < duration)
 			{
-				for (int i = 0; i < particleSystems.Count; i++)
-				{
-					startParticleSizes.Add(particleSystems[i].startSize);
-					particleSystems[i].startSize = musicAnalyzer.currentLoudness;
-				}
-
+				EffectManager.effectManager.effectEmitArgs.size = musicAnalyzer.currentLoudness;
 				yield return null;
 			}
 
-            // reset the initial particle system sizes
-            for (int i = 0; i < particleSystems.Count; i++)
-			{
-                particleSystems[i].startSize = startParticleSizes[i];
-			}
-			startParticleSizes.Clear();
+			// reset the override size
+			EffectManager.effectManager.effectEmitArgs.size = null;
 
 			callback();
 		}
