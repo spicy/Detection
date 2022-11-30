@@ -29,6 +29,13 @@ public class AIMovement : MonoBehaviour
     bool patrolling;
     bool playerCaught;
 
+    Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     void Start()
     {
         curWaypoint = 0;
@@ -50,6 +57,8 @@ public class AIMovement : MonoBehaviour
 
     private void Update()
     {
+        //animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
+
         EnviromentView();
 
         if (!patrolling) Chasing();

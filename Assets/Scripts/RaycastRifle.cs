@@ -9,7 +9,7 @@ public class RaycastRifle : TwoHandInteractable, IShootable, IShootsParticle
     [SerializeField] private float bulletSize = 0.15f;
 
     [SerializeField] protected GunData gunData;
-    [SerializeField] private Transform bulletSpawn;
+    public Transform bulletSpawn;
     [SerializeField] private ParticleSystem _particleSystem;
     private int currentAmmo;
     private WaitForSeconds waitTime;

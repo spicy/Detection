@@ -1,0 +1,34 @@
+{
+    "name": "PauseMenuInput",
+    "maps": [
+        {
+            "name": "Pause Menu",
+            "id": "eeed4619-9953-4b56-984a-92957373a82a",
+            "actions": [
+                {
+                    "name": "Menu Press",
+                    "type": "Button",
+                    "id": "b11d60e0-03b3-4401-93b5-2543e58455ac",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ad620c2a-65f5-43b5-82ff-0965af4aeb6e",
+                    "path": "<OculusTouchController>/menu",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
