@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Detection
@@ -5,25 +6,34 @@ namespace Detection
     public class EnemySurface : MonoBehaviour, IScannable, IRevealable
     {
         [SerializeField] private Color defaultColor;
+        public int hitCount = 0;
+        private int hitThreshold = 50;
+        private int hitMax = 200;
+        private bool runningReduceHitCount = false;
+        [SerializeField] private DissolveController dissolveController;
 
         void IScannable.EmitParticle(RaycastHit hit, VFXEmitArgs overrideArgs)
         {
-            Color color = defaultColor;
-            float lifetime = 0.5f;
-            float size = 0.015f;
-
-            if (overrideArgs.color != null) color = (Color)overrideArgs.color;
-            if (overrideArgs.lifetime != null) lifetime = (float)overrideArgs.lifetime;
-            if (overrideArgs.size != null) size = (float)overrideArgs.size;
-
-            ParticleSpawner.spawner.Spawn(color, hit.point, lifetime, size);
+            if (hitCount < hitMax) hitCount++;
+            if (hitCount > hitThreshold) Reveal();
+            if (!runningReduceHitCount) StartCoroutine(ReduceHitCount());
         }
 
-        // need to implement, want to show outline of enemy after x amount of scans
-        // possibly show through walls?
-        void IRevealable.Reveal()
+        private IEnumerator ReduceHitCount()
         {
+            runningReduceHitCount = true;
+            while (hitCount > 0)
+            { 
+                hitCount -= 25;
+                yield return new WaitForSeconds(.1f);
+            }
+            dissolveController.Disappear();
+            runningReduceHitCount = false;
+        }
 
+        public void Reveal()
+        {
+            dissolveController.Appear();
         }
     }
 }
