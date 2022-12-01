@@ -1003,8 +1003,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4991655869066706035, guid: f709ce5a7be3dd940867675d9f3ed244, type: 3}
-  - {fileID: 4452280977002723392, guid: f709ce5a7be3dd940867675d9f3ed244, type: 3}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2018,7 +2018,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4991655869066706035, guid: f709ce5a7be3dd940867675d9f3ed244, type: 3}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2195,16 +2195,14 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3522955778539423533, guid: 78db51abb4b8d1c4d8d44a841977861e, type: 3}
-  - {fileID: 4874126678125670354, guid: 78db51abb4b8d1c4d8d44a841977861e, type: 3}
-  - {fileID: -8274133419916619345, guid: 78db51abb4b8d1c4d8d44a841977861e, type: 3}
-  - {fileID: -6629797300637803691, guid: 78db51abb4b8d1c4d8d44a841977861e, type: 3}
-  - {fileID: -6922793697723135513, guid: 78db51abb4b8d1c4d8d44a841977861e, type: 3}
-  - {fileID: -2813467912831258332, guid: 78db51abb4b8d1c4d8d44a841977861e, type: 3}
-  - {fileID: -6478536213147159724, guid: 78db51abb4b8d1c4d8d44a841977861e, type: 3}
-  - {fileID: -3846018093981099296, guid: 78db51abb4b8d1c4d8d44a841977861e, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2307,6 +2305,8 @@ GameObject:
   - component: {fileID: 5859492430751019514}
   - component: {fileID: 6492723908682279797}
   - component: {fileID: 6492723908682279796}
+  - component: {fileID: 4698321819142362007}
+  - component: {fileID: 6135325912418286590}
   m_Layer: 7
   m_Name: Pistol_Enemy
   m_TagString: Untagged
@@ -2504,6 +2504,38 @@ MonoBehaviour:
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0}
     m_Visible: 1
+--- !u!114 &4698321819142362007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5859492430751019461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584a8b5c844824649957f7c6a67f3796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMeshRenderers:
+  - {fileID: 6641627784379520291}
+  - {fileID: 6950960812681710364}
+  meshRenderers:
+  - {fileID: 3779282296561300614}
+  - {fileID: 1375050281662560177}
+--- !u!114 &6135325912418286590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5859492430751019461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace109220d8308e4fb23e6e604abcd7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitCount: 0
+  dissolveController: {fileID: 4698321819142362007}
 --- !u!1 &5950785763223327390
 GameObject:
   m_ObjectHideFlags: 0
@@ -2609,7 +2641,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6629746613580498717}
-  - component: {fileID: 6596416752109609205}
   m_Layer: 11
   m_Name: Beretta
   m_TagString: Untagged
@@ -2634,24 +2665,6 @@ Transform:
   m_Father: {fileID: 6596416752960260380}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6596416752109609205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6289918753222221223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 1
-  outlineColor: {r: 0, g: 0.5589409, b: 1, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &6354382399522448564
 GameObject:
   m_ObjectHideFlags: 0
@@ -7082,6 +7095,9 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   rotationType: 1
+  bulletColor: {r: 240, g: 208, b: 81, a: 1}
+  bulletLifetime: 0.5
+  bulletSize: 0.15
   gunData: {fileID: 11400000, guid: 39d6ca67c1d338646a6b3627047f3d76, type: 2}
   bulletSpawn: {fileID: 6596416752087642360}
   _particleSystem: {fileID: 0}
@@ -8245,12 +8261,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6629797300637803691, guid: 78db51abb4b8d1c4d8d44a841977861e, type: 3}
-  - {fileID: -6087771358165109452, guid: 78db51abb4b8d1c4d8d44a841977861e, type: 3}
-  - {fileID: 6699446615349125189, guid: 78db51abb4b8d1c4d8d44a841977861e, type: 3}
-  - {fileID: 9185737683893222716, guid: 78db51abb4b8d1c4d8d44a841977861e, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

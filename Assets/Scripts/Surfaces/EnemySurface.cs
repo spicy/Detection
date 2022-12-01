@@ -5,7 +5,6 @@ namespace Detection
 {
     public class EnemySurface : MonoBehaviour, IScannable, IRevealable
     {
-        [SerializeField] private Color defaultColor;
         public int hitCount = 0;
         private int hitThreshold = 50;
         private int hitMax = 200;
