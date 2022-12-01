@@ -38512,8 +38512,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1601284901}
-  tempOffsetX: 650
-  tempOffsetY: 300
+  tempOffsetX: 1250
+  tempOffsetY: 550
 --- !u!114 &1601284897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38528,8 +38528,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1601284901}
   numParticlesPerScan: 1200
-  sprayAngleX: 100
-  sprayAngleY: 100
+  sprayAngleX: 130
+  sprayAngleY: 130
   maxRayDistance: 40
 --- !u!114 &1601284898
 MonoBehaviour:

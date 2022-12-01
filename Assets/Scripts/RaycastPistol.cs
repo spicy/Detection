@@ -1,7 +1,8 @@
 using UnityEngine;
 using Detection;
+using static Detection.IDealsDamage;
 
-public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle
+public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle, IDealsDamage
 {
     [SerializeField] private Color bulletColor = new Color(240, 208, 81);
     [SerializeField] private float bulletLifetime = 0.5f;
@@ -19,7 +20,17 @@ public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle
 
     public override void StartObjectAction()
     {
+        Attack();
+    } 
+    
+    public void Attack()
+    {
         Shoot();
+    }
+
+    public Weapons GetWeaponEnum()
+    {
+        return Weapons.Pistol;
     }
 
     public void Shoot()
