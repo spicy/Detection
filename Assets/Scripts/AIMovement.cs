@@ -19,6 +19,8 @@ public class AIMovement : MonoBehaviour
     public Transform[] waypoints;
     int curWaypoint;
 
+    int speedHash = Animator.StringToHash("Speed");
+
     Vector3 playerLastPosition = Vector3.zero;
     Vector3 playerPosition;
 
@@ -57,7 +59,9 @@ public class AIMovement : MonoBehaviour
 
     private void Update()
     {
-        //animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
+        // temporary way to keep the enemy speed but increase the animation speed so the enemy doesnt look like they are sliding
+        float speedOffset = 1f;
+        animator.SetFloat(speedHash, navMeshAgent.velocity.magnitude + speedOffset);
 
         EnviromentView();
 
