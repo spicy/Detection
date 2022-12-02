@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using Detection;
+using static Detection.IDealsDamage;
 
 public class RaycastRifle : TwoHandInteractable, IShootable, IShootsParticle, IDealsDamage
 {
@@ -33,6 +34,11 @@ public class RaycastRifle : TwoHandInteractable, IShootable, IShootsParticle, ID
     public void Attack()
     {
         Shoot();
+    }
+
+    public Weapons GetWeaponEnum()
+    {
+        return Weapons.Rifle;
     }
 
     public void Shoot()

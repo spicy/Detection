@@ -1,6 +1,7 @@
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine;
 using Detection;
+using static Detection.IDealsDamage;
 
 public class DoubleBarrelShotgun : Weapon, IShootable, IShootsParticle, IDealsDamage
 {
@@ -26,6 +27,11 @@ public class DoubleBarrelShotgun : Weapon, IShootable, IShootsParticle, IDealsDa
     public void Attack()
     {
         Shoot();
+    }
+
+    public Weapons GetWeaponEnum()
+    {
+        return Weapons.Shotgun;
     }
 
     public void Shoot()

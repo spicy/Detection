@@ -2,11 +2,11 @@ using UnityEngine.XR.Interaction.Toolkit;
 using System.Collections;
 using UnityEngine;
 using Detection;
+using static Detection.IDealsDamage;
 
-public class Grenade : XRGrabInteractable, IHasAIBehavior
+public class Grenade : XRGrabInteractable, IHasAIBehavior, IDealsDamage
 {
     [SerializeField] private GameObject explosionPrefab;
-    [SerializeField] private GameObject grenadePrefab;
     [SerializeField] private float explodeRadius;
     [SerializeField] private float damage;
     [SerializeField] private float grenadeTimer;
@@ -20,11 +20,35 @@ public class Grenade : XRGrabInteractable, IHasAIBehavior
         selectEntered.AddListener(EnableRing);
         selectExited.AddListener(DisableRing);
         grenadeRing = GetComponentInChildren<GrenadeRing>();
+        XRSocketInteractor socket = GetComponentInChildren<XRSocketInteractor>();
+        grenadeRing.transform.SetParent(socket.transform);
         ringCollider = grenadeRing.GetComponent<Collider>();
 
         // Ignore collision between ring and grenade
         Physics.IgnoreCollision(GetComponent<Collider>(), ringCollider);
         ringCollider.enabled = false;
+    }
+    private void Update()
+    {
+        if (!grenadeRing.isConnected && !exploded)
+        {
+            exploded = true;
+            StartCoroutine(TimerRoutine());
+        }
+    }
+
+    private void EnableRing(SelectEnterEventArgs args)
+    {
+        // Allow the ring to be pulled after the grenade has been picked up
+        ringCollider.enabled = true;
+    }
+
+    private void DisableRing(SelectExitEventArgs args)
+    {
+        if (grenadeRing.isConnected)
+        {
+            ringCollider.enabled = false;
+        }
     }
 
     public void DoAIBehavior()
@@ -35,9 +59,9 @@ public class Grenade : XRGrabInteractable, IHasAIBehavior
     // This function directly moves the transform of the grenade. The grenade stops when it reaches the target position
     IEnumerator ThrowRoutine()
     {
-        GameObject throwGrenade = Instantiate(grenadePrefab, transform.position, transform.rotation, null);
+        GameObject throwGrenade = Instantiate(gameObject, transform.position, transform.rotation, null);
         Physics.IgnoreCollision(throwGrenade.GetComponent<Collider>(), transform.GetComponent<Collider>());
-        GetComponent<MeshRenderer>().enabled = false;
+        GetComponentInChildren<MeshRenderer>().enabled = false;
         throwGrenade.GetComponentInChildren<GrenadeRing>().isConnected = false;
 
         float gravity = Physics.gravity.magnitude;
@@ -68,35 +92,21 @@ public class Grenade : XRGrabInteractable, IHasAIBehavior
 
         Destroy(gameObject);
     }
-
-    private void EnableRing(SelectEnterEventArgs args)
-    {
-        // Allow the ring to be pulled after the grenade has been picked up
-        ringCollider.enabled = true;
-    }
-
-    private void DisableRing(SelectExitEventArgs args)
-    {
-        if(grenadeRing.isConnected)
-        {
-            ringCollider.enabled = false;
-        }
-    }
-
-    private void Update()
-    {
-        if(!grenadeRing.isConnected && !exploded)
-        {
-            exploded = true;
-            StartCoroutine(TimerRoutine());
-        }
-    }
-
+    
     private IEnumerator TimerRoutine()
     {
         yield return new WaitForSecondsRealtime(grenadeTimer);
 
         Explode();
+    }
+    public void Attack()
+    {
+        StartCoroutine(TimerRoutine());
+    }
+
+    public Weapons GetWeaponEnum()
+    {
+        return Weapons.Grenade;
     }
 
     private void Explode()
@@ -115,9 +125,9 @@ public class Grenade : XRGrabInteractable, IHasAIBehavior
         Destroy(gameObject);
     }
 
-    //public override bool IsSelectableBy(IXRSelectInteractor interactor)
-    //{
-    //    bool isGrabbed = firstInteractorSelecting != null && !interactor.Equals(firstInteractorSelecting);
-    //    return base.IsSelectableBy(interactor) && !isGrabbed;
-    //}
+    public override bool IsSelectableBy(IXRSelectInteractor interactor)
+    {
+        bool isGrabbed = firstInteractorSelecting != null && !interactor.Equals(firstInteractorSelecting);
+        return base.IsSelectableBy(interactor) && !isGrabbed;
+    }
 }

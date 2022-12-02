@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AIWeaponManager : MonoBehaviour
 {
+    [System.Serializable]
     public struct NecessaryUseConditions
     {
         public int minRange;
@@ -37,6 +38,4 @@ public class AIWeaponManager : MonoBehaviour
             dealsDamage.Attack();
         }
     }
-
-
 }

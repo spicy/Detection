@@ -48,13 +48,6 @@ public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle, I
         }
     }
 
-    // Recoil does not work
-    //public void Recoil()
-    //{
-    //    rigidBody.AddRelativeForce(Vector3.back * gunData.recoilForce, ForceMode.Impulse);
-    //    rigidBody.AddRelativeTorque(Vector3.left * gunData.recoilForce, ForceMode.Impulse);
-    //}
-
     public void ShootAndEmitParticle(Ray ray)
     {
         RaycastHit hit;
