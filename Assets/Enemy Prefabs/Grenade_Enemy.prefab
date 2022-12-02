@@ -1332,6 +1332,9 @@ GameObject:
   - component: {fileID: 5413741619449123330}
   - component: {fileID: 2431899872780265775}
   - component: {fileID: 2431899872780265761}
+  - component: {fileID: 1033964293269507195}
+  - component: {fileID: 6619355197349771192}
+  - component: {fileID: 3397985656588385310}
   m_Layer: 7
   m_Name: Grenade_Enemy
   m_TagString: Untagged
@@ -1458,8 +1461,11 @@ MonoBehaviour:
   meshResolution: 1
   edgeIterations: 4
   edgeDistance: 0.5
+  firingrange: 10
+  firingrate: 2
   waypoints:
   - {fileID: 0}
+  weaponManager: {fileID: 3397985656588385310}
 --- !u!114 &5413741619449123329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1542,6 +1548,53 @@ MonoBehaviour:
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0}
     m_Visible: 1
+--- !u!114 &1033964293269507195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3095108328084403088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace109220d8308e4fb23e6e604abcd7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitCount: 0
+  dissolveController: {fileID: 6619355197349771192}
+--- !u!114 &6619355197349771192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3095108328084403088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584a8b5c844824649957f7c6a67f3796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMeshRenderers:
+  - {fileID: 2850458287971604342}
+  - {fileID: 2005183728126396745}
+  meshRenderers:
+  - {fileID: 8732205667455719438}
+  - {fileID: 8906009193984042171}
+--- !u!114 &3397985656588385310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3095108328084403088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c4ab5bada15894284e4a5adffe87e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeaponNecessaryUseConditions:
+    minRange: 3
+    maxRange: 8
 --- !u!1 &3221952775406864434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,7 +1691,6 @@ GameObject:
   - component: {fileID: 3221952775740182397}
   - component: {fileID: 3221952775740182398}
   - component: {fileID: 3221952775740182373}
-  - component: {fileID: 3221952775740182396}
   m_Layer: 11
   m_Name: Grenade
   m_TagString: Untagged
@@ -1820,24 +1872,6 @@ MonoBehaviour:
   explodeRadius: 4
   damage: 100
   grenadeTimer: 5
---- !u!114 &3221952775740182396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3221952775740182378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0.56078434, b: 1, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &3221952777356571915
 GameObject:
   m_ObjectHideFlags: 0
@@ -1953,7 +1987,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4991655869066706035, guid: f709ce5a7be3dd940867675d9f3ed244, type: 3}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2275,7 +2309,6 @@ GameObject:
   - component: {fileID: 6260167799230605517}
   - component: {fileID: 8906009193984042171}
   - component: {fileID: 6260167799230605518}
-  - component: {fileID: 6260167799230605513}
   m_Layer: 11
   m_Name: ring
   m_TagString: Untagged
@@ -2356,7 +2389,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4852610c7258f4a44905bfbb8effd4e9, type: 2}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2500,24 +2533,6 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   isConnected: 1
---- !u!114 &6260167799230605513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4652548693336462395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0.56078434, b: 1, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &4982146271847631477
 GameObject:
   m_ObjectHideFlags: 0
@@ -3370,8 +3385,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4991655869066706035, guid: f709ce5a7be3dd940867675d9f3ed244, type: 3}
-  - {fileID: 4452280977002723392, guid: f709ce5a7be3dd940867675d9f3ed244, type: 3}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3759,7 +3774,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4852610c7258f4a44905bfbb8effd4e9, type: 2}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

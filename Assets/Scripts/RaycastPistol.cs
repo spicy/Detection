@@ -1,7 +1,8 @@
 using UnityEngine;
 using Detection;
+using static Detection.IDealsDamage;
 
-public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle
+public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle, IDealsDamage
 {
     [SerializeField] private Color bulletColor = new Color(240, 208, 81);
     [SerializeField] private float bulletLifetime = 0.5f;
@@ -19,7 +20,17 @@ public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle
 
     public override void StartObjectAction()
     {
+        Attack();
+    } 
+    
+    public void Attack()
+    {
         Shoot();
+    }
+
+    public Weapons GetWeaponEnum()
+    {
+        return Weapons.Pistol;
     }
 
     public void Shoot()
@@ -36,13 +47,6 @@ public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle
             AudioManager.manager.Play("gun_empty");
         }
     }
-
-    // Recoil does not work
-    //public void Recoil()
-    //{
-    //    rigidBody.AddRelativeForce(Vector3.back * gunData.recoilForce, ForceMode.Impulse);
-    //    rigidBody.AddRelativeTorque(Vector3.left * gunData.recoilForce, ForceMode.Impulse);
-    //}
 
     public void ShootAndEmitParticle(Ray ray)
     {

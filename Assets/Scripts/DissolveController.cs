@@ -4,46 +4,88 @@ using UnityEngine;
 
 public class DissolveController : MonoBehaviour
 {
-    private Material material;
-
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private List<SkinnedMeshRenderer> skinnedMeshRenderers;
+    [SerializeField] private List<MeshRenderer> meshRenderers;
+    private List<Material> materials;
+    private bool coroutineRunning = false;
+    private enum LastUsed
     {
-        material = GetComponent<SkinnedMeshRenderer>().sharedMaterial;
-        Appear();
+        None,
+        Appear,
+        Disappear
+    }
+
+    private LastUsed lastUsed = LastUsed.None;
+
+    public void Start()
+    {
+        materials = new List<Material>();
+        foreach (SkinnedMeshRenderer smr in skinnedMeshRenderers)
+        {
+            foreach (Material mat in smr.materials)
+            {
+                materials.Add(mat);
+            }
+        }
+
+        foreach (MeshRenderer mr in meshRenderers)
+        {
+            foreach (Material mat in mr.materials)
+            {
+                materials.Add(mat);
+            }
+        }
     }
 
     public void Appear()
     {
-        StartCoroutine(FadeIn());
+        if (!coroutineRunning && lastUsed != LastUsed.Appear)
+        {
+            lastUsed = LastUsed.Appear;
+            foreach (Material mat in materials)
+            {
+                StartCoroutine(FadeIn(mat));
+            }
+        }
     }
-
 
     public void Disappear()
     {
-        StartCoroutine(FadeOut());
+        new WaitForSeconds(1f);
+        if (!coroutineRunning && lastUsed != LastUsed.Disappear)
+        {
+            lastUsed = LastUsed.Disappear;
+            foreach (Material mat in materials)
+            {
+                StartCoroutine(FadeOut(mat));
+            }
+        }
     }
 
     //-1 showing --- 1 invisible
-    private IEnumerator FadeIn()
+    private IEnumerator FadeIn(Material mat)
     {
-        float amt = material.GetFloat("_dissolveAmount");
-        for (; amt > -1; amt -= 0.03f)
-        { 
-            material.SetFloat("_dissolveAmount", amt);
-            yield return null;
+        float amt = mat.GetFloat("_dissolveAmount");
+        while (amt > -1)
+        {
+            coroutineRunning = true;
+            amt -= 0.1f;
+            mat.SetFloat("_dissolveAmount", amt);
+            yield return new WaitForSeconds(0.01f);
         }
-        Disappear();
+        coroutineRunning = false;
     }
 
-    private IEnumerator FadeOut()
+    private IEnumerator FadeOut(Material mat)
     {
-        float amt = material.GetFloat("_dissolveAmount");
-        for (; amt < 1; amt += 0.03f)
+        float amt = mat.GetFloat("_dissolveAmount");
+        while (amt < 1)
         {
-            material.SetFloat("_dissolveAmount", amt);
-            yield return null;
+            coroutineRunning = true;
+            amt += 0.1f;
+            mat.SetFloat("_dissolveAmount", amt);
+            yield return new WaitForSeconds(0.01f);
         }
-        Appear();
+        coroutineRunning = false;
     }
 }
