@@ -2498,6 +2498,7 @@ GameObject:
   - component: {fileID: 5092688273724174220}
   - component: {fileID: 8580520097140927544}
   - component: {fileID: 5381115418090694166}
+  - component: {fileID: 6356202195675834499}
   m_Layer: 7
   m_Name: Rifle_Enemy
   m_TagString: Untagged
@@ -2601,8 +2602,11 @@ MonoBehaviour:
   meshResolution: 1
   edgeIterations: 4
   edgeDistance: 0.5
+  firingrange: 10
+  firingrate: 2
   waypoints:
   - {fileID: 0}
+  weaponManager: {fileID: 0}
 --- !u!195 &5092688273724174208
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2732,6 +2736,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitCount: 0
   dissolveController: {fileID: 8580520097140927544}
+--- !u!114 &6356202195675834499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5613470493623465277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c4ab5bada15894284e4a5adffe87e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeaponNecessaryUseConditions:
+    minRange: 1
+    maxRange: 10
 --- !u!1 &5630454878652454502
 GameObject:
   m_ObjectHideFlags: 0

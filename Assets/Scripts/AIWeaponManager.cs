@@ -8,8 +8,8 @@ public class AIWeaponManager : MonoBehaviour
     [System.Serializable]
     public struct NecessaryUseConditions
     {
-        public int minRange;
-        public int maxRange;
+        public float minRange;
+        public float maxRange;
     }
 
     [SerializeField] private NecessaryUseConditions currentWeaponNecessaryUseConditions;

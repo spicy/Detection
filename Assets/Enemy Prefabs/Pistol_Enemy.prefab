@@ -2307,6 +2307,7 @@ GameObject:
   - component: {fileID: 6492723908682279796}
   - component: {fileID: 4698321819142362007}
   - component: {fileID: 6135325912418286590}
+  - component: {fileID: 1286597278075322582}
   m_Layer: 7
   m_Name: Pistol_Enemy
   m_TagString: Untagged
@@ -2410,8 +2411,11 @@ MonoBehaviour:
   meshResolution: 1
   edgeIterations: 4
   edgeDistance: 0.5
+  firingrange: 10
+  firingrate: 2
   waypoints:
   - {fileID: 0}
+  weaponManager: {fileID: 1286597278075322582}
 --- !u!195 &6492723908682279800
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2536,6 +2540,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitCount: 0
   dissolveController: {fileID: 4698321819142362007}
+--- !u!114 &1286597278075322582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5859492430751019461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c4ab5bada15894284e4a5adffe87e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeaponNecessaryUseConditions:
+    minRange: 0
+    maxRange: 4
 --- !u!1 &5950785763223327390
 GameObject:
   m_ObjectHideFlags: 0

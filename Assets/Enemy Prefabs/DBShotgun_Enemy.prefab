@@ -1125,6 +1125,7 @@ GameObject:
   - component: {fileID: 2971048920018297391}
   - component: {fileID: 8850683722138291141}
   - component: {fileID: 15279368248131341}
+  - component: {fileID: 5424814530389490901}
   m_Layer: 7
   m_Name: DBShotgun_Enemy
   m_TagString: Untagged
@@ -1228,8 +1229,11 @@ MonoBehaviour:
   meshResolution: 1
   edgeIterations: 4
   edgeDistance: 0.5
+  firingrange: 10
+  firingrate: 2
   waypoints:
   - {fileID: 0}
+  weaponManager: {fileID: 5424814530389490901}
 --- !u!195 &2971048920018297379
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1351,9 +1355,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ace109220d8308e4fb23e6e604abcd7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultColor: {r: 1, g: 0, b: 0, a: 0}
   hitCount: 0
   dissolveController: {fileID: 8850683722138291141}
+--- !u!114 &5424814530389490901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2481652636882827422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c4ab5bada15894284e4a5adffe87e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeaponNecessaryUseConditions:
+    minRange: 0
+    maxRange: 6
 --- !u!1 &3102643276034436591
 GameObject:
   m_ObjectHideFlags: 0

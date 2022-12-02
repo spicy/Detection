@@ -1,7 +1,11 @@
 using UnityEngine;
 using UnityEngine.AI;
-public class AIMovement : MonoBehaviour
+public class AIController : MonoBehaviour
 {
+    const string CHASE_TRIGGER = "Chasing";
+    const string WALK_TRIGGER = "Patrolling";
+    const string SHOOT_TRIGGER = "Shooting";
+
     public NavMeshAgent navMeshAgent;
     public float waitingTime = 4.5f;
     public float rotationTime = 2.5f;
@@ -16,31 +20,28 @@ public class AIMovement : MonoBehaviour
     public int edgeIterations = 4;
     public float edgeDistance = 0.5f;
 
+    public float firingrange = 10.0f;
+    public float firingrate = 2.0f;
+
     public Transform[] waypoints;
+    private int curWaypoint;
+    private Animator animator;
+
+    private Vector3 playerLastPosition = Vector3.zero;
+    private Vector3 playerPosition;
+
     [SerializeField] private AIWeaponManager weaponManager;
-    int curWaypoint;
+    private int speedHash = Animator.StringToHash("Speed");
 
-    int speedHash = Animator.StringToHash("Speed");
+    private WeaponInverseKinematics weaponInverseKinematics;
+    private GameObject playerObject;
 
-    Vector3 playerLastPosition = Vector3.zero;
-    Vector3 playerPosition;
-
-    float delayTime;
-    float rotate;
-    bool playerIsInRange;
-    bool playerIsNear;
-    bool patrolling;
-    bool playerCaught;
-
-    Animator animator;
-    GameObject playerObject;
-
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-        weaponManager = GetComponent<AIWeaponManager>();
-        playerObject = GameObject.FindGameObjectWithTag("Player");
-    }
+    private float delayTime;
+    private float rotate;
+    private bool playerIsInRange;
+    private bool playerIsNear;
+    private bool patrolling;
+    private bool playerCaught;
 
     void Start()
     {
@@ -59,6 +60,9 @@ public class AIMovement : MonoBehaviour
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = walkingSpeed;
         navMeshAgent.SetDestination(waypoints[curWaypoint].position);
+
+        weaponInverseKinematics = GetComponent<WeaponInverseKinematics>();
+        playerObject = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
@@ -75,6 +79,9 @@ public class AIMovement : MonoBehaviour
 
     private void Patrolling()
     {
+        animator = GetComponent<Animator>();
+        animator.SetTrigger(WALK_TRIGGER);
+
         if (playerIsNear)
         {
             if (rotate <= 0)
@@ -114,30 +121,57 @@ public class AIMovement : MonoBehaviour
 
     private void Chasing()
     {
+        // could just overwrite the shooting animation?
+        animator.SetTrigger(CHASE_TRIGGER);
+
         playerIsNear = false;
         playerLastPosition = Vector3.zero;
+
+        weaponInverseKinematics.SetTargetTransform(playerObject.transform);
 
         if (!playerCaught)
         {
             Move(RunningSpeed);
             navMeshAgent.SetDestination(playerPosition);
         }
-        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
-        {
-            if (delayTime <= 0 && !playerCaught && Vector3.Distance(transform.position, playerObject.transform.position) >= 6f)
-            {
-                patrolling = true;
-                playerIsNear = false;
 
-                Move(walkingSpeed);
-                rotate = rotationTime;
-                delayTime = waitingTime;
-                navMeshAgent.SetDestination(waypoints[curWaypoint].position);
+        if (delayTime <= 0 && !playerCaught && Vector3.Distance(transform.position, playerPosition) >= 6f)
+        {
+            patrolling = true;
+            playerIsNear = false;
+            playerCaught = true;
+
+            Move(walkingSpeed);
+            rotate = rotationTime;
+            delayTime = waitingTime;
+            navMeshAgent.SetDestination(waypoints[curWaypoint].position);
+        }
+        else
+        {
+            playerCaught = false;
+            if (Vector3.Distance(transform.position, playerPosition) >= 2.5f) Stop();
+            delayTime -= Time.deltaTime;
+        }
+    }
+
+    private void TryAttack()
+    {
+        AIWeaponManager.NecessaryUseConditions useConditions = weaponManager.GetWeaponNecessaryUseConditions();
+        float dist = Vector3.Distance(transform.position, playerPosition);
+
+        // Player is visible
+        if (playerIsInRange)
+        {
+            // Player is in range to use the weapon -> stop the enemy and try an attack
+            if (dist < useConditions.maxRange && dist > useConditions.minRange)
+            {
+                animator.SetTrigger(SHOOT_TRIGGER);
+                weaponManager.DoAttack();
             }
             else
             {
-                if (Vector3.Distance(transform.position, playerObject.transform.position) >= 2.5f) Stop();
-                delayTime -= Time.deltaTime;
+                Move(RunningSpeed);
+                navMeshAgent.SetDestination(playerPosition);
             }
         }
     }
@@ -203,6 +237,7 @@ public class AIMovement : MonoBehaviour
                 {
                     playerIsInRange = true;
                     patrolling = false;
+                    TryAttack();
                 }
                 else playerIsInRange = false;
             }
