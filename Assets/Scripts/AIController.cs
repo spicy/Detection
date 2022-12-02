@@ -121,36 +121,31 @@ public class AIController : MonoBehaviour
 
     private void Chasing()
     {
-        // could just overwrite the shooting animation?
-        animator.SetTrigger(CHASE_TRIGGER);
-
         playerIsNear = false;
         playerLastPosition = Vector3.zero;
-
-        weaponInverseKinematics.SetTargetTransform(playerObject.transform);
 
         if (!playerCaught)
         {
             Move(RunningSpeed);
             navMeshAgent.SetDestination(playerPosition);
         }
-
-        if (delayTime <= 0 && !playerCaught && Vector3.Distance(transform.position, playerPosition) >= 6f)
+        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
         {
-            patrolling = true;
-            playerIsNear = false;
-            playerCaught = true;
+            if (delayTime <= 0 && !playerCaught && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f)
+            {
+                patrolling = true;
+                playerIsNear = false;
 
-            Move(walkingSpeed);
-            rotate = rotationTime;
-            delayTime = waitingTime;
-            navMeshAgent.SetDestination(waypoints[curWaypoint].position);
-        }
-        else
-        {
-            playerCaught = false;
-            if (Vector3.Distance(transform.position, playerPosition) >= 2.5f) Stop();
-            delayTime -= Time.deltaTime;
+                Move(walkingSpeed);
+                rotate = rotationTime;
+                delayTime = waitingTime;
+                navMeshAgent.SetDestination(waypoints[curWaypoint].position);
+            }
+            else
+            {
+                if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 2.5f) Stop();
+                delayTime -= Time.deltaTime;
+            }
         }
     }
 
