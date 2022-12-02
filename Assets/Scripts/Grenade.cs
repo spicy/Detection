@@ -99,6 +99,7 @@ public class Grenade : XRGrabInteractable, IHasAIBehavior, IDealsDamage
 
         Explode();
     }
+
     public void Attack()
     {
         StartCoroutine(TimerRoutine());
@@ -119,7 +120,7 @@ public class Grenade : XRGrabInteractable, IHasAIBehavior, IDealsDamage
             damageTaker.TakeDamage(damage);
         }
 
-        Instantiate(explosionPrefab, transform.position, transform.rotation);
+        Instantiate(explosionPrefab, transform.position, transform.rotation, transform);
         AudioManager.manager.Play("small_explosion");
 
         Destroy(gameObject);
