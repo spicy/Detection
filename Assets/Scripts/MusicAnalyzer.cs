@@ -6,6 +6,7 @@ namespace Detection
 {
     public class MusicAnalyzer : MonoBehaviour
     {
+        private MusicManager musicManager;
         [SerializeField] public float minLoudness = 0.0f;
         [SerializeField] public float maxLoudness = 250;
         [SerializeField] public float updateStep = 0.01f;
@@ -14,8 +15,6 @@ namespace Detection
         private AudioSource songPlaying;
         private float curTimeCount = 0.0f;
         private float[] audioSamples;
-
-        private MusicManager musicManager;
 
         // This represents the current song Loudness at any point in the game.
         public float currentLoudness = 0.0f;

@@ -1,8 +1,9 @@
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine;
 using Detection;
+using static Detection.IDealsDamage;
 
-public class DoubleBarrelShotgun : Weapon, IShootable, IShootsParticle
+public class DoubleBarrelShotgun : Weapon, IShootable, IShootsParticle, IDealsDamage
 {
     [SerializeField] private Color bulletColor = new Color(240, 208, 81);
     [SerializeField] private float bulletLifetime = 0.5f;
@@ -20,9 +21,19 @@ public class DoubleBarrelShotgun : Weapon, IShootable, IShootsParticle
 
     protected override void StartAttacking(ActivateEventArgs args)
     {
+        Attack();
+    }
+
+    public void Attack()
+    {
         Shoot();
     }
-    
+
+    public Weapons GetWeaponEnum()
+    {
+        return Weapons.Shotgun;
+    }
+
     public void Shoot()
     {
         if(currentAmmo > 0)

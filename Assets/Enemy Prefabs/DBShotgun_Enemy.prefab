@@ -1123,6 +1123,9 @@ GameObject:
   - component: {fileID: 9213069152712030275}
   - component: {fileID: 2971048920018297390}
   - component: {fileID: 2971048920018297391}
+  - component: {fileID: 8850683722138291141}
+  - component: {fileID: 15279368248131341}
+  - component: {fileID: 5424814530389490901}
   m_Layer: 7
   m_Name: DBShotgun_Enemy
   m_TagString: Untagged
@@ -1174,10 +1177,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.4
-  m_Height: 1.94
+  m_Radius: 0.125
+  m_Height: 0.5
   m_Direction: 1
-  m_Center: {x: 0, y: 0.81, z: 0}
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!95 &9213069152712030302
 Animator:
   serializedVersion: 4
@@ -1226,8 +1229,11 @@ MonoBehaviour:
   meshResolution: 1
   edgeIterations: 4
   edgeDistance: 0.5
+  firingrange: 10
+  firingrate: 2
   waypoints:
   - {fileID: 0}
+  weaponManager: {fileID: 5424814530389490901}
 --- !u!195 &2971048920018297379
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1320,6 +1326,52 @@ MonoBehaviour:
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0}
     m_Visible: 1
+--- !u!114 &8850683722138291141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2481652636882827422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584a8b5c844824649957f7c6a67f3796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMeshRenderers:
+  - {fileID: 3389607401727499384}
+  - {fileID: 1393660360980103751}
+  meshRenderers:
+  - {fileID: 6391874675671292631}
+--- !u!114 &15279368248131341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2481652636882827422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace109220d8308e4fb23e6e604abcd7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitCount: 0
+  dissolveController: {fileID: 8850683722138291141}
+--- !u!114 &5424814530389490901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2481652636882827422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c4ab5bada15894284e4a5adffe87e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeaponNecessaryUseConditions:
+    minRange: 0
+    maxRange: 6
 --- !u!1 &3102643276034436591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,9 +1816,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 93d0e60656950e84faeee05680d35470, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1968,7 +2018,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4991655869066706035, guid: f709ce5a7be3dd940867675d9f3ed244, type: 3}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2914,8 +2964,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4991655869066706035, guid: f709ce5a7be3dd940867675d9f3ed244, type: 3}
-  - {fileID: 4452280977002723392, guid: f709ce5a7be3dd940867675d9f3ed244, type: 3}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
+  - {fileID: 2100000, guid: 8851bb2ffa3ffed44bc69896e1cc4f5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5668,7 +5718,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunData: {fileID: 11400000, guid: 66ab31e8239d3594790ce619035a3f4c, type: 2}
-  _particleSystem: {fileID: 0}
+  bulletColor: {r: 240, g: 208, b: 81, a: 1}
+  bulletLifetime: 0.5
+  bulletSize: 0.2
   bulletSpawn: {fileID: 7106604859698476062}
   pelletsPerShot: 10
   spread: 2
@@ -5946,7 +5998,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7283730216948353863}
-  - component: {fileID: 7106604860585356435}
   m_Layer: 11
   m_Name: SawedOff_Shotty
   m_TagString: Untagged
@@ -5970,24 +6021,6 @@ Transform:
   m_Father: {fileID: 7106604860335259131}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &7106604860585356435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7953025602494927357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0.56078434, b: 1, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &8013779035400689776
 GameObject:
   m_ObjectHideFlags: 0
