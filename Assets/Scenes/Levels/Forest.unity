@@ -11104,7 +11104,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1000806218}
-  colors: []
+  colors:
+  - serializedVersion: 2
+    rgba: 4280690973
+  - serializedVersion: 2
+    rgba: 4281015324
+  - serializedVersion: 2
+    rgba: 4281015324
+  - serializedVersion: 2
+    rgba: 4278530075
+  - serializedVersion: 2
+    rgba: 4278854162
+  - serializedVersion: 2
+    rgba: 4279701769
+  - serializedVersion: 2
+    rgba: 4280882975
+  - serializedVersion: 2
+    rgba: 4279441939
+  - serializedVersion: 2
+    rgba: 4278584852
+  - serializedVersion: 2
+    rgba: 4279242793
+  - serializedVersion: 2
+    rgba: 4279705367
+  - serializedVersion: 2
+    rgba: 4278652678
 --- !u!114 &1000806213
 MonoBehaviour:
   m_ObjectHideFlags: 0
