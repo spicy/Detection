@@ -8,9 +8,9 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/Levels/MainScene.unity
-    guid: bf14412988f573248a13e5d4554def45
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Levels/Lab.unity
     guid: 7197743f71253324a99bb30a51b84d0a

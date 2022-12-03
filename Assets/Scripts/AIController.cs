@@ -134,7 +134,7 @@ public class AIController : MonoBehaviour
         }
         if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
         {
-            if (delayTime <= 0 && !playerCaught && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f)
+            if (delayTime <= 0 && !playerCaught && Vector3.Distance(transform.position, playerObject.transform.position) >= 6f)
             {
                 patrolling = true;
                 playerIsNear = false;
@@ -146,7 +146,8 @@ public class AIController : MonoBehaviour
             }
             else
             {
-                if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 2.5f) Stop();
+                if (Vector3.Distance(transform.position, playerObject.transform.position) >= 2.5f) Stop();
+                if (Vector3.Distance(transform.position, playerObject.transform.position) >= 2.5f) Stop();
                 delayTime -= Time.deltaTime;
             }
         }
