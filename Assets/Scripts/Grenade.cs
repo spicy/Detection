@@ -13,6 +13,7 @@ public class Grenade : XRGrabInteractable, IHasAIBehavior, IDealsDamage
     private GrenadeRing grenadeRing;
     private Collider ringCollider;
     private bool exploded = false;
+    private int count = 0;
 
     protected override void Awake()
     {
@@ -53,7 +54,11 @@ public class Grenade : XRGrabInteractable, IHasAIBehavior, IDealsDamage
 
     public void DoAIBehavior()
     {
-        StartCoroutine(ThrowRoutine());
+        if(count == 0)
+        {
+            StartCoroutine(ThrowRoutine());
+            ++count;
+        }
     }
 
     // This function directly moves the transform of the grenade. The grenade stops when it reaches the target position

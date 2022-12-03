@@ -31,7 +31,7 @@ public class AIController : MonoBehaviour
     private Vector3 playerPosition;
 
     [SerializeField] private AIWeaponManager weaponManager;
-    private int speedHash = Animator.StringToHash("Speed");
+    private readonly int speedHash = Animator.StringToHash("Speed");
 
     private WeaponInverseKinematics weaponInverseKinematics;
     [SerializeField] private GameObject playerObject;
@@ -42,6 +42,7 @@ public class AIController : MonoBehaviour
     private bool playerIsNear;
     private bool patrolling;
     private bool playerCaught;
+    private bool tryAttack;
 
     private bool startAttack;
 
@@ -75,9 +76,16 @@ public class AIController : MonoBehaviour
         animator.SetFloat(speedHash, navMeshAgent.velocity.magnitude + speedOffset);
 
         EnviromentView();
-
-        if (!patrolling) Chasing();
-        else Patrolling();
+        if(tryAttack)
+        {
+            TryAttack();
+        }
+        else
+        {
+            if (!patrolling) Chasing();
+            else Patrolling();
+        }
+        
     }
 
     private void Patrolling()
@@ -161,6 +169,10 @@ public class AIController : MonoBehaviour
         // Player is visible
         if (playerIsInRange)
         {
+            navMeshAgent.SetDestination(playerPosition);
+            if (dist < useConditions.maxRange)
+                weaponInverseKinematics.SetTargetTransform(playerObject.transform);
+
             //float idealAttackRange;
             if (dist < useConditions.idealRange)
             {
@@ -248,7 +260,7 @@ public class AIController : MonoBehaviour
                 {
                     playerIsInRange = true;
                     patrolling = false;
-                    TryAttack();
+                    tryAttack = true;
                 }
                 else playerIsInRange = false;
             }

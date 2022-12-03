@@ -17,7 +17,8 @@ public class WeaponInverseKinematics : MonoBehaviour
     public float angleLimit = 90f;
     public float distanceLimit = 1.5f;
     public Bone[] bones;
-    
+    private Vector3 offset = new(0, 1, 0);
+
     private void Awake()
     {
         Animator animator = GetComponent<Animator>();
@@ -67,7 +68,8 @@ public class WeaponInverseKinematics : MonoBehaviour
     private void AimAtTarget(Transform bone, Vector3 targetPosition, float weight)
     {
         Vector3 aimDir = aimTransform.forward;
-        Vector3 targetdir = targetPosition - aimTransform.position;
+        // Offset for height of the player
+        Vector3 targetdir = targetPosition - aimTransform.position + offset;
         Quaternion aimTowards = Quaternion.FromToRotation(aimDir, targetdir);
         Quaternion blendedRotation = Quaternion.Slerp(Quaternion.identity, aimTowards, weight);
         bone.rotation = blendedRotation * bone.rotation;

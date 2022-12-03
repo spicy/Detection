@@ -2396,10 +2396,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 6492723908682279800}
-  waitingTime: 4.5
-  rotationTime: 2.5
+  waitingTime: 1
+  rotationTime: 0
   walkingSpeed: 3
-  RunningSpeed: 5.5
+  RunningSpeed: 4.75
   enemyRadius: 15
   enemyViewAngle: 90
   player:
@@ -2407,13 +2407,16 @@ MonoBehaviour:
     m_Bits: 1024
   obstacle:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   meshResolution: 1
   edgeIterations: 4
   edgeDistance: 0.5
   firingrange: 10
   firingrate: 2
   waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   weaponManager: {fileID: 1286597278075322582}
   playerObject: {fileID: 0}
@@ -2431,7 +2434,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -7122,6 +7125,7 @@ MonoBehaviour:
   gunData: {fileID: 11400000, guid: 39d6ca67c1d338646a6b3627047f3d76, type: 2}
   bulletSpawn: {fileID: 6596416752087642360}
   _particleSystem: {fileID: 0}
+  fireRate: 0.3
 --- !u!114 &6596416752960260376
 MonoBehaviour:
   m_ObjectHideFlags: 0
