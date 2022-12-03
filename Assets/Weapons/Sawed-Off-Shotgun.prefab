@@ -2223,6 +2223,7 @@ GameObject:
   - component: {fileID: 5961702562182255549}
   - component: {fileID: 5961702562182255550}
   - component: {fileID: 5961702562182255551}
+  - component: {fileID: 6917529215221918829}
   m_Layer: 11
   m_Name: Sawed-Off-Shotgun
   m_TagString: Untagged
@@ -2259,8 +2260,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.09452665, y: 0.13898325, z: 0.5751171}
-  m_Center: {x: 0.011548698, y: 0.06991269, z: 0.0000023841858}
+  m_Size: {x: 0.056526706, y: 0.025396995, z: 0.36379993}
+  m_Center: {x: 0.0068861544, y: 0.115673065, z: 0.08569577}
 --- !u!54 &5961702562182255548
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2411,7 +2412,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunData: {fileID: 11400000, guid: 66ab31e8239d3594790ce619035a3f4c, type: 2}
-  _particleSystem: {fileID: 0}
+  bulletColor: {r: 240, g: 208, b: 81, a: 1}
+  bulletLifetime: 0.5
+  bulletSize: 0.2
   bulletSpawn: {fileID: 5961702561543379543}
   pelletsPerShot: 10
   spread: 2
@@ -2432,6 +2435,19 @@ MonoBehaviour:
   secondaryLeftHandPose: {fileID: 5961702561640610767}
   secondaryRightHandPose: {fileID: 5961702560909669025}
   poseInterpDuration: 0.25
+--- !u!65 &6917529215221918829
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5961702562182255544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.035819903, y: 0.020616904, z: 0.0978362}
+  m_Center: {x: 0.0036634393, y: 0.07681688, z: -0.16009736}
 --- !u!1 &6808687499837980596
 GameObject:
   m_ObjectHideFlags: 0

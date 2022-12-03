@@ -4590,6 +4590,9 @@ GameObject:
   - component: {fileID: 3667148160077364169}
   - component: {fileID: 3667148160077364168}
   - component: {fileID: 3667148160077364171}
+  - component: {fileID: 3141589305663416052}
+  - component: {fileID: 5156963527139691223}
+  - component: {fileID: 1381494281480486954}
   m_Layer: 11
   m_Name: Rifle
   m_TagString: Untagged
@@ -4627,8 +4630,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.029400945, y: 0.27524948, z: 0.89452887}
-  m_Center: {x: 0.003521772, y: 0.0062994957, z: 0.17800355}
+  m_Size: {x: 0.028797753, y: 0.042057447, z: 0.48196793}
+  m_Center: {x: -0.0028282963, y: 0.09249857, z: 0.23241043}
 --- !u!54 &3667148160077364169
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4767,6 +4770,9 @@ MonoBehaviour:
   m_RetainTransformParent: 0
   m_AttachPointCompatibilityMode: 0
   rotationType: 2
+  bulletColor: {r: 240, g: 208, b: 81, a: 1}
+  bulletLifetime: 0.5
+  bulletSize: 0.15
   gunData: {fileID: 11400000, guid: cb55a76c62207084c919708e1ebb50f5, type: 2}
   bulletSpawn: {fileID: 3667148159653066748}
   _particleSystem: {fileID: 0}
@@ -4787,6 +4793,45 @@ MonoBehaviour:
   secondaryLeftHandPose: {fileID: 3667148158926037138}
   secondaryRightHandPose: {fileID: 3667148159488885363}
   poseInterpDuration: 0.25
+--- !u!65 &3141589305663416052
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3667148160077364170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03468366, y: 0.15676728, z: 0.010886982}
+  m_Center: {x: -0.0025427123, y: 0.032473132, z: -0.0024917983}
+--- !u!65 &5156963527139691223
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3667148160077364170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.029922023, y: 0.02108121, z: 0.2669127}
+  m_Center: {x: -0.00062093884, y: 0.057132944, z: -0.123417854}
+--- !u!65 &1381494281480486954
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3667148160077364170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.021295, y: 0.16066453, z: 0.026672691}
+  m_Center: {x: -0.002888696, y: 0.038314894, z: 0.15652679}
 --- !u!1 &3701625034178511161
 GameObject:
   m_ObjectHideFlags: 0

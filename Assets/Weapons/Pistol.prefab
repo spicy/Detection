@@ -1087,6 +1087,7 @@ GameObject:
   - component: {fileID: 784367865622422532}
   - component: {fileID: 784367865622422531}
   - component: {fileID: 784367865622422530}
+  - component: {fileID: 3269546306499262151}
   m_Layer: 11
   m_Name: Pistol
   m_TagString: Untagged
@@ -1140,8 +1141,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.041700363, y: 0.14327753, z: 0.22939336}
-  m_Center: {x: 0.0021244287, y: -0.05701071, z: -0.10148138}
+  m_Size: {x: 0.019796528, y: 0.029178573, z: 0.17055431}
+  m_Center: {x: -0.000053258613, y: -0.012082231, z: -0.10275988}
 --- !u!114 &784367865622422531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,6 +1265,9 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   rotationType: 1
+  bulletColor: {r: 240, g: 208, b: 81, a: 1}
+  bulletLifetime: 0.5
+  bulletSize: 0.15
   gunData: {fileID: 11400000, guid: 39d6ca67c1d338646a6b3627047f3d76, type: 2}
   bulletSpawn: {fileID: 784367867030707682}
   _particleSystem: {fileID: 0}
@@ -1284,6 +1288,19 @@ MonoBehaviour:
   secondaryLeftHandPose: {fileID: 784367866203014349}
   secondaryRightHandPose: {fileID: 784367865566632954}
   poseInterpDuration: 0.25
+--- !u!65 &3269546306499262151
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784367865622422529}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020519719, y: 0.12191498, z: 0.02776885}
+  m_Center: {x: 0.0000067800283, y: -0.061262205, z: -0.17454821}
 --- !u!1 &784367865964961329
 GameObject:
   m_ObjectHideFlags: 0
