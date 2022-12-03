@@ -34,7 +34,7 @@ public class AIController : MonoBehaviour
     private int speedHash = Animator.StringToHash("Speed");
 
     private WeaponInverseKinematics weaponInverseKinematics;
-    private GameObject playerObject;
+    [SerializeField] private GameObject playerObject;
 
     private float delayTime;
     private float rotate;
@@ -62,6 +62,7 @@ public class AIController : MonoBehaviour
         navMeshAgent.SetDestination(waypoints[curWaypoint].position);
 
         weaponInverseKinematics = GetComponent<WeaponInverseKinematics>();
+        animator = GetComponent<Animator>();
         playerObject = GameObject.FindGameObjectWithTag("Player");
     }
 

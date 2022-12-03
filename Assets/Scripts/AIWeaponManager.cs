@@ -14,22 +14,22 @@ public class AIWeaponManager : MonoBehaviour
     [SerializeField] private NecessaryUseConditions currentWeaponNecessaryUseConditions;
     private IDealsDamage dealsDamage;
     private IHasAIBehavior aiSpecificBehavior;
-    private GameObject weaponPrefab;
-    private GameObject weaponToDrop;
-    WeaponInverseKinematics weaponInverse;
+    //private GameObject weaponPrefab;
+    //private GameObject weaponToDrop;
+    //WeaponInverseKinematics weaponInverse;
 
-    public Transform target;
+    //public Transform target;
 
     public void Awake()
     {
         dealsDamage = GetComponentInChildren<IDealsDamage>();
         aiSpecificBehavior = GetComponentInChildren<IHasAIBehavior>();
-        weaponPrefab = GetWeaponPrefab();
+        //weaponPrefab = GetWeaponPrefab();
         // instantiate with a 2f up offset so the new weapon does not instantiate under the floor
-        weaponToDrop = Instantiate(weaponPrefab, transform.position + Vector3.up * 2f, transform.rotation, transform);
-        weaponToDrop.SetActive(false);
-        weaponInverse = GetComponent<WeaponInverseKinematics>();
-        weaponInverse.SetTargetTransform(target);
+        //weaponToDrop = Instantiate(weaponPrefab, transform.position + Vector3.up * 2f, transform.rotation, transform);
+        //weaponToDrop.SetActive(false);
+        //weaponInverse = GetComponent<WeaponInverseKinematics>();
+        //weaponInverse.SetTargetTransform(target);
     }
 
     public NecessaryUseConditions GetWeaponNecessaryUseConditions()
@@ -68,7 +68,7 @@ public class AIWeaponManager : MonoBehaviour
         }
         return null;
     }
-
+    /*
     public void LaunchWeapon()
     {
         weaponToDrop.transform.SetParent(null);
@@ -98,5 +98,5 @@ public class AIWeaponManager : MonoBehaviour
 
         // Addforce to weapon and launch
         weaponToDrop.GetComponent<Rigidbody>().AddForce(velocity, ForceMode.Impulse);
-    }
+    }*/
 }
