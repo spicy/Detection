@@ -1,11 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Combatant
 {
     private float difficultyModifier = 1f;
     private float regenPerTick = 1f;
     private WaitForSeconds healTick;
+    public int currentSceneIndex;
+    public int deathScene;
 
     private void Start()
     {
@@ -20,7 +23,8 @@ public class Player : Combatant
     {
         StopCoroutine(RegenOverTime());
 
-        Debug.Log("Dead");
+        SceneManager.LoadScene(deathScene);
+        SceneManager.UnloadSceneAsync(currentSceneIndex);
     }
 
     public void InstantHeal()
