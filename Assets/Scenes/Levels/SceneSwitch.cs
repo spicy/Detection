@@ -10,5 +10,11 @@ public class SceneSwitch : MonoBehaviour
     {
         SceneManager.LoadScene(sceneIndexToLoad);
         SceneManager.UnloadSceneAsync(currentSceneIndex);
+
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        if (currentScene >= PlayerPrefs.GetInt("sceneUnlocked"))
+        {
+            PlayerPrefs.SetInt("sceneUnlocked", currentScene + 1);
+        }
     }
 }
