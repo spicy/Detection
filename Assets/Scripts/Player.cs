@@ -19,6 +19,8 @@ public class Player : Combatant
     public override void Die()
     {
         StopCoroutine(RegenOverTime());
+
+        Debug.Log("Dead");
     }
 
     public void InstantHeal()

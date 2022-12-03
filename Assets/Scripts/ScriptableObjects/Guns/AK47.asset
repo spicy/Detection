@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: AK47
   m_EditorClassIdentifier: 
   name: AK47
-  animatorOverrideController: {fileID: 22100000, guid: 48fef45bf616b42498c5ae1f56e668e4,
-    type: 2}
   damage: 40
   range: 50
   fireRate: 10
   recoilForce: 0
-  startingAmmo: 60
+  startingAmmo: 9999
   maxAmmo: 60

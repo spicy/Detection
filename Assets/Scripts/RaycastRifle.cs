@@ -15,6 +15,9 @@ public class RaycastRifle : TwoHandInteractable, IShootable, IShootsParticle, ID
     private int currentAmmo;
     private WaitForSeconds waitTime;
 
+    private float fireRate = 0.175f;
+    private float nextShot = 0f;
+
     private void Start()
     {
         waitTime = new WaitForSeconds(1f / gunData.fireRate);
@@ -45,10 +48,14 @@ public class RaycastRifle : TwoHandInteractable, IShootable, IShootsParticle, ID
     {
         if (currentAmmo > 0)
         {
-            Ray ray = new(bulletSpawn.position, bulletSpawn.forward);
-            ShootAndEmitParticle(ray);
-            AudioManager.manager.Play("ak47_shot");
-            --currentAmmo;
+            if(Time.time > nextShot)
+            {
+                nextShot = Time.time + fireRate;
+                Ray ray = new(bulletSpawn.position, bulletSpawn.forward);
+                ShootAndEmitParticle(ray);
+                AudioManager.manager.Play("ak47_shot");
+                --currentAmmo;
+            }
         }
         else
         {

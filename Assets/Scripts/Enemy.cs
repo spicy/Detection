@@ -3,10 +3,14 @@ using UnityEngine;
 public class Enemy : Combatant
 {
     private Animator animator;
+    private Rigidbody[] rigidbodies;
+    private Collider[] colliders;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        colliders = GetComponentsInChildren<Collider>();
+        rigidbodies = GetComponentsInChildren<Rigidbody>();
     }
 
     private void Start()
@@ -21,10 +25,7 @@ public class Enemy : Combatant
         animator.enabled = false;
         EnableRagDoll(true);
 
-        // When the enemy goes ragdoll, the weapons fly everywhere
-        // Working on fixing that after all prefabs are done
-        
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     private void EnableRagDoll(bool state)
@@ -35,7 +36,6 @@ public class Enemy : Combatant
 
     private void SetRigidBodyKinematic(bool newState)
     {
-        Rigidbody[] rigidbodies = GetComponentsInChildren<Rigidbody>();
         foreach(Rigidbody rigidbody in rigidbodies)
         {
             rigidbody.isKinematic = newState;
@@ -46,7 +46,6 @@ public class Enemy : Combatant
 
     private void SetColliders(bool newState)
     {
-        Collider[] colliders = GetComponentsInChildren<Collider>();
         foreach (Collider collider in colliders)
         {
             collider.enabled = newState;

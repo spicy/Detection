@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33823554055901150}
   - component: {fileID: 23310257807576216}
   - component: {fileID: 64103080236565122}
+  - component: {fileID: 7898129823454827198}
   m_Layer: 0
   m_Name: Clifftile Connector 2
   m_TagString: Untagged
@@ -98,3 +99,15 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: bc2d01bc395a03f47ab1dcf946bb9682, type: 3}
+--- !u!114 &7898129823454827198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197048385328406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771f9f93fbd70744ab6b92e8e7f4613f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

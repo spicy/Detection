@@ -13,6 +13,9 @@ public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle, I
     [SerializeField] private ParticleSystem _particleSystem;
     private int currentAmmo;
 
+    private float fireRate = 0.25f;
+    private float nextShot = 0f;
+
     private void Start()
     {
         currentAmmo = gunData.startingAmmo;
@@ -35,8 +38,9 @@ public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle, I
 
     public void Shoot()
     {
-        if(currentAmmo > 0)
+        if(currentAmmo > 0 && Time.time > nextShot)
         {
+            nextShot = Time.time + fireRate;
             Ray ray = new(bulletSpawn.position, bulletSpawn.forward);
             ShootAndEmitParticle(ray);
             AudioManager.manager.Play("beretta_shot");
