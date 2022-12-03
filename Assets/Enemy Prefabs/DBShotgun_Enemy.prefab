@@ -1234,6 +1234,7 @@ MonoBehaviour:
   waypoints:
   - {fileID: 0}
   weaponManager: {fileID: 5424814530389490901}
+  playerObject: {fileID: 0}
 --- !u!195 &2971048920018297379
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1372,6 +1373,7 @@ MonoBehaviour:
   currentWeaponNecessaryUseConditions:
     minRange: 0
     maxRange: 6
+    idealRange: 3
 --- !u!1 &3102643276034436591
 GameObject:
   m_ObjectHideFlags: 0

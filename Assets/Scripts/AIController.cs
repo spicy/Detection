@@ -43,6 +43,8 @@ public class AIController : MonoBehaviour
     private bool patrolling;
     private bool playerCaught;
 
+    private bool startAttack;
+
     void Start()
     {
         curWaypoint = 0;
@@ -158,16 +160,28 @@ public class AIController : MonoBehaviour
         // Player is visible
         if (playerIsInRange)
         {
-            // Player is in range to use the weapon -> stop the enemy and try an attack
-            if (dist < useConditions.maxRange && dist > useConditions.minRange)
+            //float idealAttackRange;
+            if (dist < useConditions.idealRange)
             {
-                animator.SetTrigger(SHOOT_TRIGGER);
-                weaponManager.DoAttack();
+                // enemy slows down to try attack
+                navMeshAgent.speed = 0.5f;
+                startAttack = true;
             }
-            else
+
+            if (startAttack)
             {
-                Move(RunningSpeed);
-                navMeshAgent.SetDestination(playerPosition);
+                // Player is in range to use the weapon -> stop the enemy and try an attack
+                if (dist < useConditions.maxRange && dist > useConditions.minRange)
+                {
+                    animator.SetTrigger(SHOOT_TRIGGER);
+                    weaponManager.DoAttack();
+                }
+                else
+                {
+                    startAttack = false;
+                    Move(RunningSpeed);
+                    navMeshAgent.SetDestination(playerPosition);
+                }
             }
         }
     }

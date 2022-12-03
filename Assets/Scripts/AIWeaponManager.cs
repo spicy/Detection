@@ -9,6 +9,7 @@ public class AIWeaponManager : MonoBehaviour
     {
         public float minRange;
         public float maxRange;
+        public float idealRange;
     }
 
     [SerializeField] private NecessaryUseConditions currentWeaponNecessaryUseConditions;
