@@ -14,6 +14,9 @@ public class DoubleBarrelShotgun : Weapon, IShootable, IShootsParticle, IDealsDa
     [SerializeField] private float spread;
     private int currentAmmo;
 
+    public float fireRate = 0.25f;
+    private float nextShot = 0f;
+
     private void Start()
     {
         currentAmmo = gunData.startingAmmo;
@@ -36,9 +39,10 @@ public class DoubleBarrelShotgun : Weapon, IShootable, IShootsParticle, IDealsDa
 
     public void Shoot()
     {
-        if(currentAmmo > 0)
+        if (currentAmmo > 0 && Time.time > nextShot)
         {
-            for(int i = 0; i < pelletsPerShot; ++i)
+            nextShot = Time.time + fireRate;
+            for (int i = 0; i < pelletsPerShot; ++i)
             {
                 Ray ray = new(bulletSpawn.position, GetPelletDirection());
                 ShootAndEmitParticle(ray);
