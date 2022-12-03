@@ -25,7 +25,7 @@ public class Enemy : Combatant
         animator.enabled = false;
         EnableRagDoll(true);
 
-        Destroy(gameObject);
+        Destroy(gameObject, 4f);
     }
 
     private void EnableRagDoll(bool state)

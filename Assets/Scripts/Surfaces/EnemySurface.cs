@@ -6,7 +6,7 @@ namespace Detection
     public class EnemySurface : MonoBehaviour, IScannable, IRevealable
     {
         public int hitCount = 0;
-        private int hitThreshold = 50;
+        private int hitThreshold = 40;
         private int hitMax = 200;
         private bool runningReduceHitCount = false;
         [SerializeField] private DissolveController dissolveController;

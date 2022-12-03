@@ -2429,7 +2429,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5859492430751019461}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -7125,7 +7125,6 @@ MonoBehaviour:
   gunData: {fileID: 11400000, guid: 39d6ca67c1d338646a6b3627047f3d76, type: 2}
   bulletSpawn: {fileID: 6596416752087642360}
   _particleSystem: {fileID: 0}
-  fireRate: 0.3
 --- !u!114 &6596416752960260376
 MonoBehaviour:
   m_ObjectHideFlags: 0

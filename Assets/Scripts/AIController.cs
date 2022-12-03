@@ -2,9 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class AIController : MonoBehaviour
 {
-    const string CHASE_TRIGGER = "Chasing";
-    const string WALK_TRIGGER = "Patrolling";
-    const string SHOOT_TRIGGER = "Shooting";
+   
 
     public NavMeshAgent navMeshAgent;
     public float waitingTime = 4.5f;
@@ -72,8 +70,15 @@ public class AIController : MonoBehaviour
     private void Update()
     {
         // temporary way to keep the enemy speed but increase the animation speed so the enemy doesnt look like they are sliding
-        float speedOffset = 1f;
-        animator.SetFloat(speedHash, navMeshAgent.velocity.magnitude + speedOffset);
+        if (!navMeshAgent.isStopped)
+        {
+            float speedOffset = 1f;
+            animator.SetFloat(speedHash, navMeshAgent.velocity.magnitude + speedOffset);
+        }
+        else
+        {
+            animator.SetFloat(speedHash, 0);
+        }
 
         EnviromentView();
         if(tryAttack)
@@ -90,8 +95,7 @@ public class AIController : MonoBehaviour
 
     private void Patrolling()
     {
-        animator = GetComponent<Animator>();
-        animator.SetTrigger(WALK_TRIGGER);
+       
 
         if (playerIsNear)
         {
@@ -186,7 +190,7 @@ public class AIController : MonoBehaviour
                 // Player is in range to use the weapon -> stop the enemy and try an attack
                 if (dist < useConditions.maxRange && dist > useConditions.minRange)
                 {
-                    animator.SetTrigger(SHOOT_TRIGGER);
+                    
                     weaponManager.DoAttack();
                 }
                 else
