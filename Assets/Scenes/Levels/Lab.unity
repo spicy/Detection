@@ -20417,7 +20417,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735899507}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.11, y: -0.191, z: 3.512}
+  m_LocalPosition: {x: -17.89, y: -0.191, z: 11.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43437,6 +43437,7 @@ GameObject:
   - component: {fileID: 1520375625}
   - component: {fileID: 1520375624}
   - component: {fileID: 1520375634}
+  - component: {fileID: 1520375635}
   m_Layer: 10
   m_Name: VR Rig
   m_TagString: Player
@@ -43704,6 +43705,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timertext: {fileID: 1995994509}
+--- !u!114 &1520375635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520375622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 769f5e66a8ffd9e45bb3e6665318c3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 0
 --- !u!64 &1522464909
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50215,7 +50230,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2971048920018297378, guid: 3ba43ec7fb1b95c48b63696a6d80ea8f,
         type: 3}
+      propertyPath: waypoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2971048920018297378, guid: 3ba43ec7fb1b95c48b63696a6d80ea8f,
+        type: 3}
       propertyPath: waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 335269585}
+    - target: {fileID: 2971048920018297378, guid: 3ba43ec7fb1b95c48b63696a6d80ea8f,
+        type: 3}
+      propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 335269585}
     - target: {fileID: 2971048920018297380, guid: 3ba43ec7fb1b95c48b63696a6d80ea8f,
@@ -57874,7 +57899,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -374.8, y: 329.1}
+  m_AnchoredPosition: {x: -404, y: 359}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.36958882, y: 7.010123}
 --- !u!114 &1995994509
@@ -63407,7 +63432,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh37340
+  m_Name: pb_Mesh117768
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
