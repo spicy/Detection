@@ -14,7 +14,7 @@ public class DoubleBarrelShotgun : Weapon, IShootable, IShootsParticle, IDealsDa
     [SerializeField] private float spread;
     private int currentAmmo;
 
-    public float fireRate = 0.25f;
+    private float fireRate = 0.50f;
     private float nextShot = 0f;
 
     private void Start()

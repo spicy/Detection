@@ -13,7 +13,7 @@ public class RaycastPistol : TwoHandInteractable, IShootable, IShootsParticle, I
     [SerializeField] private ParticleSystem _particleSystem;
     private int currentAmmo;
 
-    public float fireRate = 0.25f;
+    private float fireRate = 0.25f;
     private float nextShot = 0f;
 
     private void Start()
