@@ -3,14 +3,9 @@ guid: 2f1e066e2a6b0d14bbb6b92e39c206f2
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ak47_mat
-    second: {fileID: 2100000, guid: d9491a433d973734dad2be73a52c482f, type: 2}
+  externalObjects: {}
   materials:
-    materialImportMode: 2
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
