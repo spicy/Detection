@@ -15,22 +15,18 @@ public class AIWeaponManager : MonoBehaviour
     [SerializeField] private NecessaryUseConditions currentWeaponNecessaryUseConditions;
     private IDealsDamage dealsDamage;
     private IHasAIBehavior aiSpecificBehavior;
-    //private GameObject weaponPrefab;
-    //private GameObject weaponToDrop;
-    //WeaponInverseKinematics weaponInverse;
+    private GameObject currentWeapon;
+    private GameObject weaponToDrop;
+    private WeaponInverseKinematics weaponInverse;
+    private Vector3 weaponSpawnOffset = new(0, 2, 0);
 
-    //public Transform target;
 
     public void Awake()
     {
         dealsDamage = GetComponentInChildren<IDealsDamage>();
         aiSpecificBehavior = GetComponentInChildren<IHasAIBehavior>();
-        //weaponPrefab = GetWeaponPrefab();
-        // instantiate with a 2f up offset so the new weapon does not instantiate under the floor
-        //weaponToDrop = Instantiate(weaponPrefab, transform.position + Vector3.up * 2f, transform.rotation, transform);
-        //weaponToDrop.SetActive(false);
-        //weaponInverse = GetComponent<WeaponInverseKinematics>();
-        //weaponInverse.SetTargetTransform(target);
+        weaponInverse = GetComponent<WeaponInverseKinematics>();
+        SpawnWeaponToDrop();
     }
 
     public NecessaryUseConditions GetWeaponNecessaryUseConditions()
@@ -50,36 +46,48 @@ public class AIWeaponManager : MonoBehaviour
         }
     }
 
-    private GameObject GetWeaponPrefab()
+    private void SpawnWeaponToDrop()
     {
         Weapons weapon = dealsDamage.GetWeaponEnum();
 
         switch (weapon)
         {
             case Weapons.Rifle:
-                return GetComponentInChildren<RaycastRifle>().gameObject;
+                currentWeapon = GetComponentInChildren<RaycastRifle>().gameObject;
+                weaponToDrop = Instantiate(Resources.Load<GameObject>("Weapons/Rifle"), transform.position + weaponSpawnOffset, transform.rotation, transform);
+                break;
             case Weapons.Pistol:
-                return GetComponentInChildren<RaycastPistol>().gameObject;
+                currentWeapon = GetComponentInChildren<RaycastPistol>().gameObject;
+                weaponToDrop = Instantiate(Resources.Load<GameObject>("Weapons/Pistol"), transform.position + weaponSpawnOffset, transform.rotation, transform);
+                break;
             case Weapons.Shotgun:
-                return GetComponentInChildren<DoubleBarrelShotgun>().gameObject;
+                currentWeapon = GetComponentInChildren<DoubleBarrelShotgun>().gameObject;
+                weaponToDrop = Instantiate(Resources.Load<GameObject>("Weapons/Sawed-Off-Shotgun"), transform.position + weaponSpawnOffset, transform.rotation, transform);
+                break;
             case Weapons.Grenade:
-                return GetComponentInChildren<Grenade>().gameObject;
+                currentWeapon = GetComponentInChildren<Grenade>().gameObject;
+                weaponToDrop = Instantiate(Resources.Load<GameObject>("Weapons/Grenade"), transform.position + weaponSpawnOffset, transform.rotation, transform);
+                break;
             case Weapons.Knife:
                 break;
         }
-        return null;
+
+        weaponToDrop.SetActive(false);
     }
-    /*
+
     public void LaunchWeapon()
     {
+        currentWeapon.SetActive(false);
         weaponToDrop.transform.SetParent(null);
         weaponToDrop.SetActive(true);
-        weaponToDrop.AddComponent<Outline>();
+
+        //  AI was not targeting anything --> drop weapon on floor
+        if (weaponInverse.TargetTransform == null) return;
 
         float launchAngle = 45f;
 
         // launch direction
-        Vector3 dirToLaunch = -(weaponToDrop.transform.position - weaponInverse.TargetTransform.position);
+        Vector3 dirToLaunch = (weaponInverse.TargetTransform.position - weaponToDrop.transform.position);
 
         float temp = dirToLaunch.y;
         dirToLaunch.y = 0;
@@ -99,5 +107,5 @@ public class AIWeaponManager : MonoBehaviour
 
         // Addforce to weapon and launch
         weaponToDrop.GetComponent<Rigidbody>().AddForce(velocity, ForceMode.Impulse);
-    }*/
+    }
 }

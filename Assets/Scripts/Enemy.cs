@@ -5,12 +5,14 @@ public class Enemy : Combatant
     private Animator animator;
     private Rigidbody[] rigidbodies;
     private Collider[] colliders;
+    private AIWeaponManager weaponManager;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         colliders = GetComponentsInChildren<Collider>();
         rigidbodies = GetComponentsInChildren<Rigidbody>();
+        weaponManager = GetComponent<AIWeaponManager>();
     }
 
     private void Start()
@@ -22,6 +24,9 @@ public class Enemy : Combatant
 
     public override void Die()
     {
+        // Launch weapon towards player or drop on ground if not targeting player
+        weaponManager.LaunchWeapon();
+
         animator.enabled = false;
         EnableRagDoll(true);
 

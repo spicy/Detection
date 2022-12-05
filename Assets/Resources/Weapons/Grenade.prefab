@@ -252,7 +252,7 @@ MonoBehaviour:
   m_ThrowVelocityScale: 1.5
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 1
-  m_RetainTransformParent: 1
+  m_RetainTransformParent: 0
   m_AttachPointCompatibilityMode: 0
   explosionPrefab: {fileID: 972145527659105726, guid: 6b809ddd1f4118c478fdde2d355b7870,
     type: 3}
