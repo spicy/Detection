@@ -16,7 +16,9 @@ public class WeaponInverseKinematics : MonoBehaviour
     [Range(0,1)] public float weight;
     public float angleLimit = 90f;
     public float distanceLimit = 1.5f;
+    [Tooltip("Bones to rotate while aiming at target")]
     public Bone[] bones;
+    // Temp offset for height of player
     private Vector3 offset = new(0, 1, 0);
 
     private void Awake()
@@ -30,7 +32,6 @@ public class WeaponInverseKinematics : MonoBehaviour
     void LateUpdate()
     {
         if (TargetTransform == null) return;
-        if (aimTransform == null) return;
 
         Vector3 targetPosition = GetTargetPostiion();
 
@@ -48,15 +49,15 @@ public class WeaponInverseKinematics : MonoBehaviour
     {
         Vector3 targetDir = TargetTransform.position - aimTransform.position;
         Vector3 aimDir = aimTransform.forward;
-
         float meld = 0f;
         float targetAngle = Vector3.Angle(targetDir, aimDir);
-
-        if(targetAngle > angleLimit)
-            meld += (targetAngle - angleLimit) / 50f;
-
         float targetDist = targetDir.magnitude;
 
+        // Limit the angle the enemy tries to turn while aiming at target
+        if (targetAngle > angleLimit)
+            meld += (targetAngle - angleLimit) / 40f;
+
+        // Limit the distance to which enemy tries to aim at target
         if(targetDist < distanceLimit)
             meld += distanceLimit - targetDist;
 
@@ -70,18 +71,13 @@ public class WeaponInverseKinematics : MonoBehaviour
         Vector3 aimDir = aimTransform.forward;
         // Offset for height of the player
         Vector3 targetdir = targetPosition - aimTransform.position + offset;
-        Quaternion aimTowards = Quaternion.FromToRotation(aimDir, targetdir);
-        Quaternion blendedRotation = Quaternion.Slerp(Quaternion.identity, aimTowards, weight);
-        bone.rotation = blendedRotation * bone.rotation;
+        Quaternion aimRotation = Quaternion.FromToRotation(aimDir, targetdir);
+        Quaternion weightedRotation = Quaternion.Slerp(Quaternion.identity, aimRotation, weight);
+        bone.rotation = weightedRotation * bone.rotation;
     }
 
     public void SetTargetTransform(Transform target)
     {
         TargetTransform = target;
-    }
-
-    public void SetAimTransform(Transform aim)
-    {
-        aimTransform = aim;
     }
 }

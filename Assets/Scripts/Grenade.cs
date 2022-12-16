@@ -128,7 +128,7 @@ public class Grenade : XRGrabInteractable, IHasAIBehavior, IDealsDamage
         Instantiate(explosionPrefab, transform.position, transform.rotation, transform);
         AudioManager.manager.Play("small_explosion");
 
-        Destroy(gameObject);
+        Destroy(gameObject, 0.1f);
     }
 
     public override bool IsSelectableBy(IXRSelectInteractor interactor)
