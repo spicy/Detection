@@ -39,17 +39,20 @@ public class DoubleBarrelShotgun : Weapon, IShootable, IShootsParticle, IDealsDa
 
     public void Shoot()
     {
-        if (currentAmmo > 0 && Time.time > nextShot)
+        if (currentAmmo > 0)
         {
-            nextShot = Time.time + fireRate;
-            for (int i = 0; i < pelletsPerShot; ++i)
+            if(Time.time > nextShot)
             {
-                Ray ray = new(bulletSpawn.position, GetPelletDirection());
-                ShootAndEmitParticle(ray);
-            }
+                nextShot = Time.time + fireRate;
+                for (int i = 0; i < pelletsPerShot; ++i)
+                {
+                    Ray ray = new(bulletSpawn.position, GetPelletDirection());
+                    ShootAndEmitParticle(ray);
+                }
 
-            AudioManager.manager.Play("shotgun_shot");
-            --currentAmmo;
+                AudioManager.manager.Play("shotgun_shot");
+                --currentAmmo;
+            }
         }
         else
         {
