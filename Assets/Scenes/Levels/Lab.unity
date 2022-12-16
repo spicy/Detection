@@ -49533,7 +49533,7 @@ GameObject:
   - component: {fileID: 1711005554}
   - component: {fileID: 1711005553}
   - component: {fileID: 1711005552}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: 'SceneSwitchHitbox '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
