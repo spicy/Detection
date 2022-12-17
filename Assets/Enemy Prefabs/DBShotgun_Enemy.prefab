@@ -1284,7 +1284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d076ebc0f6f27b3498b635bfefc8250b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimTransform: {fileID: 0}
+  aimTransform: {fileID: 7106604859698476062}
   accuracyIterations: 10
   weight: 0.8
   angleLimit: 90

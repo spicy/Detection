@@ -7,10 +7,21 @@ public class SpeedPickup : MonoBehaviour
 {
     [SerializeField] private float speedMultiplier = 1.2f;
     [SerializeField] private float duration = 5f;
+    private GameObject player;
 
     private void Awake()
     {
         GetComponent<Collider>().isTrigger = true;
+    }
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    private void Update()
+    {
+        transform.LookAt(player.transform);
     }
 
     private void OnTriggerEnter(Collider other)
